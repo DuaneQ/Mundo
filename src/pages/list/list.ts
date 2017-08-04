@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { FirebaseServiceProvider } from '../../providers/providers'
+import { FirebaseListObservable } from 'angularfire2/database';
 
 @Component({
   selector: 'page-list',
@@ -9,8 +11,11 @@ export class ListPage {
   selectedItem: any;
   icons: string[];
   items: Array<{title: string, note: string, icon: string}>;
+  tests: FirebaseListObservable<any[]>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams,
+              public afd: FirebaseServiceProvider) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
 
@@ -26,6 +31,7 @@ export class ListPage {
         icon: this.icons[Math.floor(Math.random() * this.icons.length)]
       });
     }
+      this.tests = this.afd.getRootList();
   }
 
   itemTapped(event, item) {
@@ -34,4 +40,11 @@ export class ListPage {
       item: item
     });
   }
+    
+
+    ionViewDidLoad() {
+    console.log(this.tests.$ref.on);
+  }
+
+
 }
