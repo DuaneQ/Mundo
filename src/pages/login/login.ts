@@ -25,19 +25,17 @@ export class LoginPage {
   }
 
   facebookLogin() {
-    this.facebook.login(['email', 'public_profile']).then(res=>{
-      const fc=firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
-      firebase.auth().signInWithCredential(fc).then((success)=>{
+    this.facebook.login(['email', 'public_profile']).then(result=>{
+      const credentials=firebase.auth.FacebookAuthProvider.credential(result.authResponse.accessToken);
+      firebase.auth().signInWithCredential(credentials).then((success)=>{
             this.userProfile = success;
-            this.firebaseLogin.setUpUser(fc, success);
-            this.navCtrl.setRoot(HomePage);
-            console.log(this.userProfile);
+            this.firebaseLogin.setUpUser(credentials, success);
       })
     }).catch(err=>{
       alert(JSON.stringify(err))
     })
+    
+    this.navCtrl.setRoot(HomePage);
   }
-
-  
 
 }
