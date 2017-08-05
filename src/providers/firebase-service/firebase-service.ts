@@ -12,26 +12,32 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class FirebaseServiceProvider {
+  ref: any;
+  data: any;
 
   constructor(public afd: AngularFireDatabase) {
   }
 
   getRootList(){
-    return  this.afd.list('/test');
+    return  this.afd.list('/users');
   }
 
   setUpUser(_credentials, _authData) {
-    var ref = this.afd.database.ref('/test/' + _authData.uid)
-    var data = {
+    this.ref = this.afd.database.ref('/users/' + _authData.uid)
+    this.data = {
       "provider": _authData.providerData[0],
       "avatar": (_credentials.imageUri || "missing"),
       "displayName": _authData.email,
     };
 
-    return ref.set(data).then(function () {
-      return data
+    return this.ref.set(this.data).then(function () {
+      return this.data
     }).catch(function (_error) {
       return _error
     })
+  }
+
+  getFacebookProfilePic(){
+    return this.ref('/provider')
   }
 }
