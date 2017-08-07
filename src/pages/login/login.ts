@@ -30,12 +30,10 @@ export class LoginPage {
       firebase.auth().signInWithCredential(credentials).then((success)=>{
             this.userProfile = success;
             this.firebaseLogin.setUpUser(credentials, success);
+            this.navCtrl.setRoot(HomePage);
       })
     }).catch(err=>{
       alert(JSON.stringify(err))
     })
-    
-    this.navCtrl.setRoot(HomePage);
   }
-
 }

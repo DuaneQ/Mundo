@@ -15,7 +15,7 @@ export class HomePage {
               private facebook: Facebook,
               public afd: FirebaseServiceProvider) {
 
-      this.userProfile = this.afd.getFacebookProfilePic();
+      // this.userProfile = this.afd.getFacebookProfilePic();
   }
 
 

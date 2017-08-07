@@ -37,7 +37,7 @@ export class FirebaseServiceProvider {
     })
   }
 
-  getFacebookProfilePic(){
-    return this.ref('/provider')
-  }
+  // getFacebookProfilePic(){
+  //   return this.ref('/provider')
+  // }
 }
