@@ -3,21 +3,25 @@ import { NavController } from 'ionic-angular';
 import { Facebook } from '@ionic-native/facebook';
 import firebase from 'firebase';
 import { FirebaseServiceProvider } from '../../providers/providers'
-
+import { AngularFireModule } from 'angularfire2';
+import { auth } from 'firebase/app'
+ 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-  userProfile: any = null;
+  user: any = null;
 
   constructor(public navCtrl: NavController,
               private facebook: Facebook,
               public afd: FirebaseServiceProvider) {
+    }
 
-      // this.userProfile = this.afd.getFacebookProfilePic();
+    ionViewDidLoad() {
+    this.user = firebase.auth().currentUser; // code from firebase docs
+    
+    console.log(this.user);
   }
-
-
 
 }

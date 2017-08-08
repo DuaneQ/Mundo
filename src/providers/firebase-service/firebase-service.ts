@@ -14,7 +14,7 @@ import 'rxjs/add/operator/map';
 export class FirebaseServiceProvider {
   ref: any;
   data: any;
-
+  auth: any;
   constructor(public afd: AngularFireDatabase) {
   }
 
@@ -29,7 +29,7 @@ export class FirebaseServiceProvider {
       "avatar": (_credentials.imageUri || "missing"),
       "displayName": _authData.email,
     };
-
+    this.auth = _authData;
     return this.ref.set(this.data).then(function () {
       return this.data
     }).catch(function (_error) {
@@ -38,6 +38,6 @@ export class FirebaseServiceProvider {
   }
 
   // getFacebookProfilePic(){
-  //   return this.ref('/provider')
+  //   return this.afd.database.ref('/users/' + this.auth + '/provider/')
   // }
 }

@@ -13,7 +13,17 @@
   <p>
     If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
   </p>
-
+  <ion-card *ngIf="user">
+    <img [src]="user.photoURL"/>
+    <ion-card-content>
+      <ion-card-title>
+        {{ user.displayName }}
+      </ion-card-title>
+      <p>
+        The UID for this new user is {{userProfile.uid}} and the email is {{userProfile.email}}
+      </p>
+    </ion-card-content>
+  </ion-card>
   <button ion-button secondary menuToggle>Toggle Menu</button>
 </ion-content>
 
