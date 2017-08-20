@@ -5,7 +5,8 @@ import firebase from 'firebase';
 import { FirebaseServiceProvider } from '../../providers/providers'
 import { AngularFireModule } from 'angularfire2';
 import { auth } from 'firebase/app'
- 
+import { SettingsPage, InfoPage } from '../pages'
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -20,8 +21,13 @@ export class HomePage {
 
     ionViewDidLoad() {
     this.user = firebase.auth().currentUser; // code from firebase docs
-    
-    console.log(this.user);
   }
+  
+    goToSettings(){
+        this.navCtrl.push(SettingsPage); 
+    }
 
+        goToInfo(){
+        this.navCtrl.push(InfoPage); 
+    }
 }

@@ -1,3 +1,31 @@
-page-home {
+.profilePhoto {
+img {
+    height: 110px;
+    width: 110px;
+    border-radius: 50%;
+    align-items: center;
+    margin: auto;
+    display: block;
+    }
+}
 
+.center-text {
+ion-card-content{    
+   text-align: center;
+    }
+}
+
+.icon {
+    font-size: 52px;
+}
+
+.settings {
+img {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    align-items: left;
+    margin: auto;
+    display: block;
+    }
 }

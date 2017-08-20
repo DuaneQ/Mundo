@@ -36,8 +36,4 @@ export class FirebaseServiceProvider {
       return _error
     })
   }
-
-  // getFacebookProfilePic(){
-  //   return this.afd.database.ref('/users/' + this.auth + '/provider/')
-  // }
 }

@@ -17,6 +17,23 @@ import firebase from 'firebase'
 })
 export class LoginPage {
     userProfile: any = null;
+    slides = [
+    {
+      title: "Welcome to Mundo",
+      description: "Let's <b>Travel the World Together</b>",
+      image: "assets/img/ica-slidebox-img-1.png",
+    },
+    {
+      title: "What is Mundo?",
+      description: "Mundo connects travelers.",
+      image: "assets/img/ica-slidebox-img-2.png",
+    },
+    {
+      title: "How?",
+      description: "Search for interesting itineraries and send requests to join them on their adventure!",
+      image: "assets/img/ica-slidebox-img-3.png",
+    }
+  ];
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,

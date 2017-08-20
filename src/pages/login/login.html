@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>login</ion-title>
   </ion-navbar>
 
@@ -14,7 +14,18 @@
 
 
 <ion-content padding>
-  <button ion-button icon-left (click)="facebookLogin()">
+  <ion-slides pager>
+    <ion-slide *ngFor="let slide of slides">
+      <img [src]="slide.image" class="slide-image"/>
+      <h2 class="slide-title" [innerHTML]="slide.title"></h2>
+      <p [innerHTML]="slide.description"></p>
+    </ion-slide>
+    <ion-slide>
+      <img src="assets/img/ica-slidebox-img-4.png" class="slide-image"/>
+      <h2 class="slide-title">Let's go!</h2>
+    </ion-slide>
+  </ion-slides>
+  <button ion-button icon-left round (click)="facebookLogin()">
     <ion-icon name="logo-facebook"></ion-icon>
     Login with Facebook
   </button>
