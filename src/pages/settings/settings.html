@@ -20,10 +20,6 @@
         <ion-label>Show me itineraries of</ion-label>
         <ion-select [(ngModel)]="itineraryType">
           <ion-option *ngFor = "let gender of genders">{{gender.name}}</ion-option>
-          <!--<ion-option value="f" checked="true">Women</ion-option>
-          <ion-option value="m">Men</ion-option>
-          <ion-option value="g">Groups</ion-option>
-          <ion-option value="c">Couples</ion-option>-->
         </ion-select>
       </ion-item>
     </ion-card-content> 

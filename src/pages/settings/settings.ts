@@ -34,18 +34,12 @@ export class SettingsPage {
   }
 
   ionViewDidLeave() {
-      this.firebaseSvcProvider.addSettings(this.itineraryType)
-        .then( () => {
-        this.navCtrl.pop();
-      }, error => {
-        console.log(error);
-      });  
+      this.firebaseSvcProvider.addSettings(this.itineraryType);
     }
 
       ionViewDidLoad() {
        this.firebaseSvcProvider.getSettings().subscribe( test => {
         this.itineraryType = test.$value;
        });
-      console.log(this.itineraryType);  
     }
   }

@@ -49,11 +49,10 @@ export class FirebaseServiceProvider {
 
     addSettings(itineraryType:FirebaseObjectObservable<any>):
     firebase.Promise<any>{
-    return this.afDatabase.object(`/users/${this.userId}/settings`).set({ itineraryType });
+    return this.afDatabase.object(`/users/${this.auth.uid}/settings`).set({ itineraryType });
   }
 
     getSettings(): FirebaseObjectObservable<any> {
-    return this.afDatabase.object(`/users/${this.userId}/settings/itineraryType`);
-    //return this.afDatabase.database.ref(`/users/${this.userId}/settings/itineraryType`).;
+    return this.afDatabase.object(`/users/${this.auth.uid}/settings/itineraryType`);
   }
 }
