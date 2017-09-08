@@ -14,5 +14,31 @@
 
 
 <ion-content padding>
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Show me itineraries of</ion-label>
+        <ion-select [(ngModel)]="itineraryType">
+          <ion-option *ngFor = "let gender of genders">{{gender.name}}</ion-option>
+          <!--<ion-option value="f" checked="true">Women</ion-option>
+          <ion-option value="m">Men</ion-option>
+          <ion-option value="g">Groups</ion-option>
+          <ion-option value="c">Couples</ion-option>-->
+        </ion-select>
+      </ion-item>
+    </ion-card-content> 
+   </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Maximum Distance</ion-label>
+        <ion-range min="1" max="100" [(ngModel)]="text" color="secondary" pin="true" >
+          <ion-label range-left>1</ion-label>
+          <ion-label range-right>100</ion-label>
+        </ion-range>
+      </ion-item>
+    </ion-card-content> 
+   </ion-card>
 
 </ion-content>

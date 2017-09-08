@@ -27,7 +27,7 @@ export class HomePage {
         this.navCtrl.push(SettingsPage); 
     }
 
-        goToInfo(){
+    goToInfo(){
         this.navCtrl.push(InfoPage); 
     }
 }

@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ActionSheetController, Platform } from 'ionic-angular';
+import { FirebaseServiceProvider } from '../../providers/providers'
+import { 
+  AngularFireDatabase, 
+  FirebaseListObservable, 
+  FirebaseObjectObservable } from 'angularfire2/database';
 
 /**
  * Generated class for the SettingsPage page.
@@ -13,12 +18,34 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'settings.html',
 })
 export class SettingsPage {
+  itineraryType: FirebaseObjectObservable<any>;
+  genders = [
+    { name: 'Female'},
+    { name: 'Male'},
+    { name: 'Groups'},
+    { name: 'Couples'},
+  ];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams, 
+              public actionsheetCtrl: ActionSheetController,
+              public platform: Platform,
+              public firebaseSvcProvider: FirebaseServiceProvider) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SettingsPage');
-  }
+  ionViewDidLeave() {
+      this.firebaseSvcProvider.addSettings(this.itineraryType)
+        .then( () => {
+        this.navCtrl.pop();
+      }, error => {
+        console.log(error);
+      });  
+    }
 
-}
+      ionViewDidLoad() {
+       this.firebaseSvcProvider.getSettings().subscribe( test => {
+        this.itineraryType = test.$value;
+       });
+      console.log(this.itineraryType);  
+    }
+  }

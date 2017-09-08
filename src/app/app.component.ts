@@ -15,41 +15,43 @@ import { HomePage, ListPage, LoginPage} from '../pages/pages'
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LoginPage;
+  rootPage: any;
 
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
-    this.initializeApp();
+
+    // AF2 Settings
+  firebase.initializeApp({
+    apiKey: "AIzaSyAXX54EgG7dHbs-lgm_uRheJm-1Q-4NBGk",
+    authDomain: "fir-92abc.firebaseapp.com",
+    databaseURL: "https://fir-92abc.firebaseio.com",
+    projectId: "fir-92abc",
+    storageBucket: "fir-92abc.appspot.com",
+    messagingSenderId: "920843394799"
+});
+
+    const unsubscribe = firebase.auth().onAuthStateChanged( user => {
+      if(!user){
+        this.rootPage = 'LoginPage';
+        unsubscribe();
+      } else {
+        this.rootPage = HomePage;
+        unsubscribe();
+      }
+    });
 
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage },
-      { title: 'Login', component: LoginPage }
     ];
 
-  }
-  
-  initializeApp() {
-    this.platform.ready().then(() => {
-    firebase.auth().onAuthStateChanged((user) =>{
-        if(user){
-          this.nav.setRoot(HomePage);
-        }else{
-          this.nav.setRoot(LoginPage);
-        }
-      });
+    platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
+      statusBar.styleDefault();
+      splashScreen.hide();
     });
-  }
-
-  openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
   }
 }
