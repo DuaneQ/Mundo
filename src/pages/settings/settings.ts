@@ -37,9 +37,9 @@ export class SettingsPage {
       this.firebaseSvcProvider.addSettings(this.itineraryType);
     }
 
-      ionViewDidLoad() {
-       this.firebaseSvcProvider.getSettings().subscribe( test => {
-        this.itineraryType = test.$value;
+  ionViewDidLoad() {
+      this.firebaseSvcProvider.getSettings().subscribe( test => {
+      this.itineraryType = test.$value;
        });
     }
   }

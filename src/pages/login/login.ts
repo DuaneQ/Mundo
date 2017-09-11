@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { HomePage} from '../pages'
 import { Facebook } from '@ionic-native/facebook'
-import { FirebaseServiceProvider } from '../../providers/providers'
+import { LoginServiceProvider } from '../../providers/providers'
 import firebase from 'firebase'
+
 /**
  * Generated class for the LoginPage page.
  *
@@ -38,7 +39,7 @@ export class LoginPage {
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public facebook: Facebook,
-              public firebaseLogin: FirebaseServiceProvider) {
+              public firebaseLogin: LoginServiceProvider) {
   }
 
   facebookLogin() {

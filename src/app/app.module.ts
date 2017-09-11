@@ -10,6 +10,9 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Facebook } from '@ionic-native/facebook'
+import { AngularFireOfflineModule } from 'angularfire2-offline';
+import { IonicStorageModule } from '@ionic/storage';
+import { LoginServiceProvider } from '../providers/login-service/login-service';
 
 // AF2 Settings
 export const firebaseConfig = {
@@ -34,8 +37,10 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
+    AngularFireOfflineModule,
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -52,7 +57,9 @@ export const firebaseConfig = {
     SplashScreen,
     Facebook,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    FirebaseServiceProvider
+    FirebaseServiceProvider,
+    AngularFireOfflineModule,
+    LoginServiceProvider
   ]
 })
 export class AppModule {}

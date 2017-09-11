@@ -7,7 +7,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { HomePage, ListPage, LoginPage} from '../pages/pages'
-
+import { IonicStorageModule } from '@ionic/storage';
 
 @Component({
   templateUrl: 'app.html'

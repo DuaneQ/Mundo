@@ -13,11 +13,11 @@
   <p>
     Discover the world together.
   </p>
-  <ion-card *ngIf="user">
-    <img [src]="user.photoURL"/>
+  <ion-card *ngIf="loggedInUser">
+    <img [src]="loggedInUser.photoURL"/>
     <ion-card-content>
       <ion-card-title >
-        {{ user.displayName }}
+        {{ loggedInUser.displayName }}
       </ion-card-title>
     </ion-card-content> 
    </ion-card>
