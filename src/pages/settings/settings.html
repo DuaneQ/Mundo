@@ -16,8 +16,8 @@
 <ion-content padding>
   <ion-card>
     <ion-card-content>
+      <ion-label>Show me itineraries of</ion-label>
       <ion-item>
-        <ion-label>Show me itineraries of</ion-label>
         <ion-select [(ngModel)]="itineraryType">
           <ion-option *ngFor = "let gender of genders">{{gender.name}}</ion-option>
         </ion-select>
@@ -26,14 +26,40 @@
    </ion-card>
 
   <ion-card>
-    <ion-card-content>
-      <ion-item>
-        <ion-label>Maximum Distance</ion-label>
-        <ion-range min="1" max="100" [(ngModel)]="text" color="secondary" pin="true" >
+    <ion-card-content [ngSwitch]="measurement">
+      <ion-item *ngSwitchCase="'Miles'">
+        <ion-label> 
+          <p>Maximum Distance:    {{maxDistance}}Mi.</p>
+        </ion-label>
+        <ion-range min="1" max="100" [(ngModel)]="maxDistance" color="secondary" pin="true" class="rangeLabel">
           <ion-label range-left>1</ion-label>
           <ion-label range-right>100</ion-label>
         </ion-range>
       </ion-item>
+
+      <ion-item *ngSwitchCase="'Kilometers'">
+        <ion-label> 
+          <p>Maximum Distance:    {{maxDistance}}Km.</p>
+        </ion-label>
+        <ion-range min="1" max="100" [(ngModel)]="maxDistance" color="secondary" pin="true" class="rangeLabel">
+          <ion-label range-left>1</ion-label>
+          <ion-label range-right>160</ion-label>
+        </ion-range>
+      </ion-item>
+    </ion-card-content> 
+   </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      <p>Show distance in</p>
+      <ion-segment [(ngModel)]="measurement">
+        <ion-segment-button value="Miles">
+          Miles
+        </ion-segment-button>
+        <ion-segment-button value="Kilometers">
+          Kilometers
+        </ion-segment-button>
+      </ion-segment>
     </ion-card-content> 
    </ion-card>
 

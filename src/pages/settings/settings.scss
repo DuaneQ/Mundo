@@ -1,3 +1,23 @@
-page-settings {
+ion-label { 
+    color: red !important; 
+    font-size: 20px;
+    font-weight: bold;
+    }
 
+p { 
+    color: red !important; 
+    font-size: 20px !important;
+    font-weight: bold !important;
+    padding-right: 35px !important;
+    }
+
+ion-segment-button { 
+    color: black !important; 
+    font-weight: bold !important;
+    }
+
+.rangeLabel {
+ion-label { 
+    color: black !important;
+    }
 }

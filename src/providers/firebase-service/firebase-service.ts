@@ -27,12 +27,14 @@ export class FirebaseServiceProvider {
     });
   }
 
-    addSettings(itineraryType:FirebaseObjectObservable<any>):
+    addSettings(itineraryType:FirebaseObjectObservable<any>, 
+                maxDistance:FirebaseObjectObservable<any>, 
+                measurement:string):
     firebase.Promise<any>{
-    return this.afDatabase.object(`/users/${this.userId}/settings`).set({ itineraryType });
+    return this.afDatabase.object(`/users/${this.userId}/settings`).set({ itineraryType, maxDistance, measurement });
   }
 
     getSettings(): FirebaseObjectObservable<any> {
-    return this.afDatabase.object(`/users/${this.userId}/settings/itineraryType`);
+    return this.afDatabase.object(`/users/${this.userId}/settings/`);
   }
 }

@@ -19,6 +19,9 @@ import {
 })
 export class SettingsPage {
   itineraryType: FirebaseObjectObservable<any>;
+  maxDistance: FirebaseObjectObservable<any>;
+  public settings: any;
+  measurement: string = "Miles";
   genders = [
     { name: 'Female'},
     { name: 'Male'},
@@ -34,12 +37,15 @@ export class SettingsPage {
   }
 
   ionViewDidLeave() {
-      this.firebaseSvcProvider.addSettings(this.itineraryType);
+      this.firebaseSvcProvider.addSettings(this.itineraryType, this.maxDistance, this.measurement);
     }
 
   ionViewDidLoad() {
-      this.firebaseSvcProvider.getSettings().subscribe( test => {
-      this.itineraryType = test.$value;
+      this.firebaseSvcProvider.getSettings().subscribe( firebaseSettings => {
+      this.settings = firebaseSettings;
+      this.itineraryType = this.settings.itineraryType;
+      this.maxDistance = this.settings.maxDistance;
+      this.measurement = this.settings.measurement;
        });
     }
   }
