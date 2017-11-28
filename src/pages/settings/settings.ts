@@ -5,6 +5,7 @@ import {
   AngularFireDatabase, 
   FirebaseListObservable, 
   FirebaseObjectObservable } from 'angularfire2/database';
+import { EmailComposer } from '@ionic-native/email-composer';
 
 /**
  * Generated class for the SettingsPage page.
@@ -22,6 +23,9 @@ export class SettingsPage {
   maxDistance: FirebaseObjectObservable<any>;
   public settings: any;
   measurement: string = "Miles";
+  connectionNotifications: boolean;
+  messageNotifications: boolean;
+  
   genders = [
     { name: 'Female'},
     { name: 'Male'},
@@ -33,11 +37,16 @@ export class SettingsPage {
               public navParams: NavParams, 
               public actionsheetCtrl: ActionSheetController,
               public platform: Platform,
-              public firebaseSvcProvider: FirebaseServiceProvider) {
+              public firebaseSvcProvider: FirebaseServiceProvider,
+              private emailComposer: EmailComposer) {
   }
 
   ionViewDidLeave() {
-      this.firebaseSvcProvider.addSettings(this.itineraryType, this.maxDistance, this.measurement);
+      this.firebaseSvcProvider.addSettings(this.itineraryType, 
+                                          this.maxDistance, 
+                                          this.measurement, 
+                                          this.connectionNotifications,
+                                          this.messageNotifications);
     }
 
   ionViewDidLoad() {
@@ -46,6 +55,21 @@ export class SettingsPage {
       this.itineraryType = this.settings.itineraryType;
       this.maxDistance = this.settings.maxDistance;
       this.measurement = this.settings.measurement;
+      this.connectionNotifications = this.settings.connectionNotifications;
+      this.messageNotifications = this.settings.messageNotifications;
        });
     }
-  }
+
+    sendHelpEmail() {
+      let email = {
+        to: 'DuaneQHodges@gmail.com',
+
+        subject: 'Test',
+        body: '',
+        isHtml: true
+      };
+  
+      this.emailComposer.open(email);
+    }
+
+}

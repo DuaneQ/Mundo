@@ -29,9 +29,16 @@ export class FirebaseServiceProvider {
 
     addSettings(itineraryType:FirebaseObjectObservable<any>, 
                 maxDistance:FirebaseObjectObservable<any>, 
-                measurement:string):
+                measurement:string,
+                connectionNotifications:boolean, 
+                messageNotifications:boolean):
+
     firebase.Promise<any>{
-    return this.afDatabase.object(`/users/${this.userId}/settings`).set({ itineraryType, maxDistance, measurement });
+    return this.afDatabase.object(`/users/${this.userId}/settings`).set({ itineraryType, 
+                                  maxDistance, 
+                                  measurement, 
+                                  connectionNotifications, 
+                                  messageNotifications});
   }
 
     getSettings(): FirebaseObjectObservable<any> {

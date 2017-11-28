@@ -63,4 +63,19 @@
     </ion-card-content> 
    </ion-card>
 
+   <ion-card>
+    <ion-card-content class="toggleLabel">
+      <p>Notifications</p>
+        <ion-item>
+          <ion-label>New Connections</ion-label>
+          <ion-toggle [(ngModel)]="connectionNotifications" ></ion-toggle>
+        </ion-item>
+        <ion-item>
+          <ion-label>New Messages</ion-label>
+          <ion-toggle [(ngModel)]="messageNotifications" ></ion-toggle>
+        </ion-item>
+    </ion-card-content> 
+  </ion-card>
+
+  <button ion-button block (click)="sendHelpEmail()">Help & Support</button>
 </ion-content>

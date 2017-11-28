@@ -13,6 +13,7 @@ import { Facebook } from '@ionic-native/facebook'
 import { AngularFireOfflineModule } from 'angularfire2-offline';
 import { IonicStorageModule } from '@ionic/storage';
 import { LoginServiceProvider } from '../providers/login-service/login-service';
+import { EmailComposer } from '@ionic-native/email-composer';
 
 // AF2 Settings
 export const firebaseConfig = {
@@ -59,7 +60,8 @@ export const firebaseConfig = {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FirebaseServiceProvider,
     AngularFireOfflineModule,
-    LoginServiceProvider
+    LoginServiceProvider,
+    EmailComposer
   ]
 })
 export class AppModule {}
