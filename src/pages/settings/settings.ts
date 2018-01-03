@@ -6,6 +6,8 @@ import {
   FirebaseListObservable, 
   FirebaseObjectObservable } from 'angularfire2/database';
 import { EmailComposer } from '@ionic-native/email-composer';
+import { TermsPage, LicensesPage, PrivacypolicyPage } from '../pages'
+import { Facebook } from '@ionic-native/facebook'
 
 /**
  * Generated class for the SettingsPage page.
@@ -38,7 +40,8 @@ export class SettingsPage {
               public actionsheetCtrl: ActionSheetController,
               public platform: Platform,
               public firebaseSvcProvider: FirebaseServiceProvider,
-              private emailComposer: EmailComposer) {
+              private emailComposer: EmailComposer,
+              public facebook: Facebook,) {
   }
 
   ionViewDidLeave() {
@@ -72,4 +75,19 @@ export class SettingsPage {
       this.emailComposer.open(email);
     }
 
+    goToPrivacyPolicy(){
+        this.navCtrl.push(PrivacypolicyPage); 
+    }
+
+    goToTerms(){
+        this.navCtrl.push(TermsPage); 
+    }
+
+    goToLicenses(){
+        this.navCtrl.push(LicensesPage); 
+    }
+
+    logoutOfFacebook(){
+        this.facebook.logout; 
+    }
 }

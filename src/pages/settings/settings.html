@@ -78,4 +78,22 @@
   </ion-card>
 
   <button ion-button block (click)="sendHelpEmail()">Help & Support</button>
+
+  <ion-card>
+    <ion-card-content class="legalLinks">
+      <p>Legal</p>
+        <ion-item>
+          <div (click)="goToLicenses()">Licenses</div>
+        </ion-item>
+        <ion-item>
+          <div (click)="goToPrivacyPolicy()">Privacy Policy</div>
+        </ion-item>
+        <ion-item>
+          <div (click)="goToTerms()">Terms of Service</div>
+        </ion-item>
+    </ion-card-content> 
+  </ion-card>
+
+    <button ion-button block (click)="logoutOfFacebook()">Logout</button>
+
 </ion-content>

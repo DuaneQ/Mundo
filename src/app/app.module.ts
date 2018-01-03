@@ -3,7 +3,8 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { FirebaseServiceProvider } from '../providers/providers'
-import { HomePage, ListPage, LoginPage, SettingsPage, InfoPage} from '../pages/pages'
+import { HomePage, ListPage, LoginPage, SettingsPage, InfoPage,
+LicensesPage, PrivacypolicyPage, TermsPage} from '../pages/pages'
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -32,7 +33,10 @@ export const firebaseConfig = {
     ListPage,
     LoginPage,
     SettingsPage,
-    InfoPage
+    InfoPage,
+    LicensesPage,
+    TermsPage,
+    PrivacypolicyPage
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),
@@ -50,7 +54,10 @@ export const firebaseConfig = {
     ListPage,
     LoginPage,
     SettingsPage,
-    InfoPage
+    InfoPage,
+    LicensesPage,
+    TermsPage,
+    PrivacypolicyPage
   ],
   providers: [
     FirebaseServiceProvider,
