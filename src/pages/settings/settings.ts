@@ -6,8 +6,9 @@ import {
   FirebaseListObservable, 
   FirebaseObjectObservable } from 'angularfire2/database';
 import { EmailComposer } from '@ionic-native/email-composer';
-import { TermsPage, LicensesPage, PrivacypolicyPage } from '../pages'
+import { TermsPage, LicensesPage, PrivacypolicyPage, LoginPage } from '../pages'
 import { Facebook } from '@ionic-native/facebook'
+import firebase from 'firebase';
 
 /**
  * Generated class for the SettingsPage page.
@@ -25,8 +26,8 @@ export class SettingsPage {
   maxDistance: FirebaseObjectObservable<any>;
   public settings: any;
   measurement: string = "Miles";
-  connectionNotifications: boolean;
-  messageNotifications: boolean;
+  connectionNotifications: boolean = true;
+  messageNotifications: boolean = true;
   
   genders = [
     { name: 'Female'},
@@ -55,11 +56,11 @@ export class SettingsPage {
   ionViewDidLoad() {
       this.firebaseSvcProvider.getSettings().subscribe( firebaseSettings => {
       this.settings = firebaseSettings;
-      this.itineraryType = this.settings.itineraryType;
-      this.maxDistance = this.settings.maxDistance;
-      this.measurement = this.settings.measurement;
-      this.connectionNotifications = this.settings.connectionNotifications;
-      this.messageNotifications = this.settings.messageNotifications;
+      this.itineraryType = (typeof this.settings.itineraryType === 'undefined') ? 'Groups' : this.settings.itineraryType;
+      this.maxDistance = (typeof this.settings.maxDistance === 'undefined') ? 50 : this.settings.maxDistance;
+      this.measurement = (typeof this.settings.measurement === 'undefined') ? 'Miles' : this.settings.measurement;
+      this.connectionNotifications = (typeof this.settings.connectionNotifications === 'undefined') ? true : this.settings.connectionNotifications;
+      this.messageNotifications = (typeof this.settings.messageNotifications === 'undefined') ? true : this.settings.messageNotifications;
        });
     }
 
@@ -87,7 +88,12 @@ export class SettingsPage {
         this.navCtrl.push(LicensesPage); 
     }
 
-    logoutOfFacebook(){
-        this.facebook.logout; 
+    logoutOfFacebook():firebase.Promise<void> {
+          //const userId:string = firebase.auth().currentUser.uid;
+          //firebase.database().ref('/users/${userId}').off();
+          return firebase.auth().signOut().then(() => {
+            this.navCtrl.setRoot(LoginPage);
+            console.log('test');
+          }); 
     }
 }
