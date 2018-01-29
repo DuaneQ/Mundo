@@ -93,7 +93,6 @@ export class SettingsPage {
           //firebase.database().ref('/users/${userId}').off();
           return firebase.auth().signOut().then(() => {
             this.navCtrl.setRoot(LoginPage);
-            console.log('test');
           }); 
     }
 }
