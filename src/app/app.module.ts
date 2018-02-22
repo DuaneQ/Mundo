@@ -15,6 +15,7 @@ import { AngularFireOfflineModule } from 'angularfire2-offline';
 import { IonicStorageModule } from '@ionic/storage';
 import { LoginServiceProvider } from '../providers/login-service/login-service';
 import { EmailComposer } from '@ionic-native/email-composer';
+import { Camera } from '@ionic-native/camera';
 
 // AF2 Settings
 export const firebaseConfig = {
@@ -68,7 +69,8 @@ export const firebaseConfig = {
     FirebaseServiceProvider,
     AngularFireOfflineModule,
     LoginServiceProvider,
-    EmailComposer
+    EmailComposer,
+    Camera
   ]
 })
 export class AppModule {}
