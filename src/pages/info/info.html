@@ -18,10 +18,10 @@
       <ion-col >
         <ion-card-content [ngSwitch]="photo1">
           <ion-item *ngSwitchDefault>
-              <img [src]="photo1"/>
+              <img [src]="photo1" (click)="DeletePhoto('photo1.png')"/>
           </ion-item>
           <ion-item *ngSwitchCase="'UseButton'">
-              <img src="assets/img/ImageUpload.png" (click)="selectPhoto()"/>
+              <img src="assets/img/ImageUpload.png" (click)="selectPhoto('photo1.png')"/>
           </ion-item>
         </ion-card-content>
       </ion-col>
@@ -29,10 +29,10 @@
       <ion-col >
         <ion-card-content [ngSwitch]="photo2">
           <ion-item *ngSwitchDefault>
-              <img [src]="photo2"/>
+              <img [src]="photo2" (click)="DeletePhoto('photo2.png')"/>
           </ion-item>
           <ion-item *ngSwitchCase="'UseButton'">
-              <img src="assets/img/ImageUpload.png" (click)="selectPhoto()"/>
+              <img src="assets/img/ImageUpload.png" (click)="selectPhoto('photo2.png')"/>
           </ion-item>
         </ion-card-content>
       </ion-col>
@@ -42,10 +42,10 @@
       <ion-col >
         <ion-card-content [ngSwitch]="photo3">
           <ion-item *ngSwitchDefault>
-              <img [src]="photo3"/>
+              <img [src]="photo3" (click)="DeletePhoto('photo3.png')"/>
           </ion-item>
           <ion-item *ngSwitchCase="'UseButton'">
-              <img src="assets/img/ImageUpload.png" (click)="selectPhoto()"/>
+              <img src="assets/img/ImageUpload.png" (click)="selectPhoto('photo3.png')"/>
           </ion-item>
         </ion-card-content>
       </ion-col>
@@ -53,10 +53,10 @@
       <ion-col >
         <ion-card-content [ngSwitch]="photo4">
           <ion-item *ngSwitchDefault>
-              <img [src]="photo4"/>
+              <img [src]="photo4" (click)="DeletePhoto('photo4.png')"/>
           </ion-item>
           <ion-item *ngSwitchCase="'UseButton'">
-              <img src="assets/img/ImageUpload.png" (click)="selectPhoto()"/>
+              <img src="assets/img/ImageUpload.png" (click)="selectPhoto('photo4.png')"/>
           </ion-item>
         </ion-card-content>
       </ion-col>
