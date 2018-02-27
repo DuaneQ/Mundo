@@ -1,6 +1,6 @@
 {
   "name": "Mundo",
-  "app_id": "",
+  "app_id": "47dfb658",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}

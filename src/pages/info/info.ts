@@ -64,6 +64,7 @@ export class InfoPage {
       });
   }
  
+ //generates unique name for pic uploads but not sure if I'm going to use it.
   private generateUUID(): any {
     var d = new Date().getTime();
     var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx'.replace(/[xy]/g, function (c) {
@@ -187,7 +188,7 @@ export class InfoPage {
           } 
 
           case 'photo4.png': { 
-            this.photo1 = 'UseButton'           
+            this.photo4 = 'UseButton'           
             break; 
           } 
 
