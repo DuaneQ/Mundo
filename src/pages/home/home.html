@@ -1,26 +1,32 @@
 <ion-header>
-  <ion-navbar color="primary">
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Home</ion-title>
+  <ion-navbar color="navbar">
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="profilePhoto center-text">
-  <h3>Mundo</h3>
-
-  <h2 class="motto">
-    Discover the world together.
-  </h2>
-  <ion-card *ngIf="loggedInUser">
+<ion-content padding class="profilePhoto center-text" *ngIf="loggedInUser">
+  <div>
     <img [src]="loggedInUser.photoURL"/>
-    <ion-card-content>
-      <ion-card-title >
-        {{ loggedInUser.displayName }}
-      </ion-card-title>
-    </ion-card-content> 
-   </ion-card>
+    <h1>
+      Background Info
+    </h1>
+      <h2>
+        Name
+      </h2>
+        <p>
+          {{ loggedInUser.displayName }}
+        </p>
+      <h2>
+        City
+      </h2>
+        <p>
+          <input [(ngModel)]="location" id="places" type="text" name="search" placeholder="Enter city" #search> 
+        </p>
+  </div>
+  <div>
+      <h2>
+        Interested destinations
+      </h2>
+  </div>
   <ion-content class="settings">
     <ion-row>
         <img src="assets/img/advanced.png" (click)="goToSettings()"/>

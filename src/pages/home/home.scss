@@ -9,9 +9,40 @@ img {
     }
 }
 
+
 .center-text {
 ion-card-content{    
    text-align: center;
+    }
+
+    h1 { 
+    font-size: 12px !important;
+    color: black !important;
+    font-family: 'Gotham'; 
+    }
+
+    h2 { 
+    font-size: 14px !important;
+    color: black !important;
+    font-family: 'Gotham'; 
+    }
+
+    p { 
+    font-size: 14px !important;
+    color: black !important;
+    font-family: 'Gotham'; 
+    margin-bottom: 0.6em;
+    border-bottom: 4px solid #FFFAFA;
+    padding: 0.5em 0 0.17em 0;
+    color: #000;
+    font-weight: normal !important;
+    }
+
+    div {
+    margin-bottom: 0.19em;
+    border-bottom: 14px solid #FFFAFA;
+    padding: 0.5em 0 0.17em 0;
+    color: #FFFAFA;
     }
 }
 
@@ -27,12 +58,5 @@ img {
     align-items: left;
     margin: auto;
     display: block;
-    }
-}
-
-.motto {
-h2 { 
-    font-size: 10px !important;
-    color: black !important;
     }
 }

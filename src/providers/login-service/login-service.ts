@@ -29,7 +29,7 @@ ref: any;
     this.data = {
       "provider": _authData.providerData[0],
       "avatar": (_credentials.imageUri || "missing"),
-      "displayName": _authData.email,
+      "email": _authData.email,
     };
     this.auth = _authData;
     return this.ref.set(this.data).then(function () {

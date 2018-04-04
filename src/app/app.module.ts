@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { FirebaseServiceProvider } from '../providers/providers'
+import { FirebaseServiceProvider, LoginServiceProvider } from '../providers/providers'
 import { HomePage, ListPage, LoginPage, SettingsPage, InfoPage,
 LicensesPage, PrivacypolicyPage, TermsPage} from '../pages/pages'
 import { AngularFireModule } from 'angularfire2';
@@ -13,9 +13,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Facebook } from '@ionic-native/facebook'
 import { AngularFireOfflineModule } from 'angularfire2-offline';
 import { IonicStorageModule } from '@ionic/storage';
-import { LoginServiceProvider } from '../providers/login-service/login-service';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { Camera } from '@ionic-native/camera';
+import { GeolocateServiceProvider } from '../providers/geolocate-service/geolocate-service';
+import { Geolocation } from '@ionic-native/geolocation';
+import { PlacesServiceProvider } from '../providers/places-service/places-service';
+import { AgmCoreModule } from '@agm/core';
 
 // AF2 Settings
 export const firebaseConfig = {
@@ -45,6 +48,10 @@ export const firebaseConfig = {
     AngularFireDatabaseModule,
     AngularFireOfflineModule,
     BrowserModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyC7kG6CDB_L5ebyPatP9Ke94a_avwnLWUU',
+      libraries: ["places"]
+    }),
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
   ],
@@ -61,7 +68,6 @@ export const firebaseConfig = {
     PrivacypolicyPage
   ],
   providers: [
-    FirebaseServiceProvider,
     StatusBar,
     SplashScreen,
     Facebook,
@@ -70,7 +76,10 @@ export const firebaseConfig = {
     AngularFireOfflineModule,
     LoginServiceProvider,
     EmailComposer,
-    Camera
+    Camera,
+    GeolocateServiceProvider,
+    Geolocation,
+    PlacesServiceProvider
   ]
 })
 export class AppModule {}
