@@ -13,14 +13,12 @@ import 'rxjs/add/operator/map';
 export class GeolocateServiceProvider {
 
   constructor(private geolocation: Geolocation) {
-    console.log('Hello GeolocateServiceProvider Provider');
   }
 
   onLocateUser(){
     this.geolocation.getCurrentPosition()
     .then(
       (location) => {
-        console.log(location.coords.latitude + ' ' + location.coords.longitude)
       }
     )
     .catch(

@@ -5,6 +5,9 @@
 
 <ion-content padding class="profilePhoto center-text" *ngIf="loggedInUser">
   <div>
+<!--  <div class="cameraIcon">
+    <img src="assets/img/ic-camera.png"/>
+  </div>-->
     <img [src]="loggedInUser.photoURL"/>
     <h1>
       Background Info
@@ -19,19 +22,90 @@
         City
       </h2>
         <p>
-          <input [(ngModel)]="location" id="places" type="text" name="search" placeholder="Enter city" #search> 
+          <input [(ngModel)]="location" placeholder="Enter city" #search> 
         </p>
-  </div>
-  <div>
+      <h2>
+        Add photos
+      </h2>
+      <ion-row class="add-background">
+        <ion-col>
+          <div [ngSwitch]="photo1">
+              <div *ngSwitchDefault>
+                  <img [src]="photo1" (click)="Present('photo1.png')"/>
+              </div>
+              <div *ngSwitchCase="'UseButton'">
+                  <img src="assets/img/add-an-image.png" (click)="selectPhoto('photo1.png')"/>
+              </div>      
+          </div>
+        </ion-col>
+        <ion-col >
+          <div [ngSwitch]="photo2">
+              <div *ngSwitchDefault>
+                  <img [src]="photo2" (click)="Present('photo2.png')"/>
+              </div>
+              <div *ngSwitchCase="'UseButton'">
+                  <img src="assets/img/add-an-image.png" (click)="selectPhoto('photo2.png')"/>
+              </div>      
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="add-background">
+        <ion-col>
+          <div [ngSwitch]="photo3">
+              <div *ngSwitchDefault>
+                  <img [src]="photo3" (click)="Present('photo3.png')"/>
+              </div>
+              <div *ngSwitchCase="'UseButton'">
+                  <img src="assets/img/add-an-image.png" (click)="selectPhoto('photo3.png')"/>
+              </div>      
+          </div>
+        </ion-col>
+        <ion-col >
+          <div [ngSwitch]="photo4">
+              <div *ngSwitchDefault>
+                  <img [src]="photo4" (click)="Present('photo4.png')"/>
+              </div>
+              <div *ngSwitchCase="'UseButton'">
+                  <img src="assets/img/add-an-image.png" (click)="selectPhoto('photo4.png')"/>
+              </div>      
+          </div>
+        </ion-col>
+      </ion-row>
+      <div>
+      </div>
       <h2>
         Interested destinations
-      </h2>
+      </h2>        
+      <p>
+          <input placeholder="Enter city" #searchPlaces> 
+      </p>
+      <div padding class="selected-places">
+        <ion-chip *ngFor="let intPlace of intPlaces">
+          <ion-label>{{ intPlace }}</ion-label>
+          <button (click)="deletePlace(intPlace)">
+            <img src="assets/img/ic-small-close.png"/>
+          </button>
+        </ion-chip>
+      </div>
+    <div>
+        <h1>
+          Notifications
+        </h1>
+        <ion-item>
+          <ion-label>New Connections</ion-label>
+          <ion-toggle [(ngModel)]="connectionNotifications" ></ion-toggle>
+        </ion-item>
+        <ion-item>
+          <ion-label>New Messages</ion-label>
+          <ion-toggle [(ngModel)]="messageNotifications" ></ion-toggle>
+        </ion-item>
+    </div>
   </div>
   <ion-content class="settings">
     <ion-row>
         <img src="assets/img/advanced.png" (click)="goToSettings()"/>
         <img src="assets/img/edit.png" (click)="goToInfo()"/>
     </ion-row>
-</ion-content>
+  </ion-content>
 </ion-content>
 
