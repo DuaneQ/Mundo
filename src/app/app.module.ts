@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { FirebaseServiceProvider, LoginServiceProvider } from '../providers/providers'
+import { FirebaseServiceProvider, LoginServiceProvider, GeolocateServiceProvider, CameraServiceProvider } from '../providers/providers'
 import { HomePage, ListPage, LoginPage, SettingsPage, InfoPage,
 LicensesPage, PrivacypolicyPage, TermsPage} from '../pages/pages'
 import { AngularFireModule } from 'angularfire2';
@@ -15,7 +15,6 @@ import { AngularFireOfflineModule } from 'angularfire2-offline';
 import { IonicStorageModule } from '@ionic/storage';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { Camera } from '@ionic-native/camera';
-import { GeolocateServiceProvider } from '../providers/geolocate-service/geolocate-service';
 import { Geolocation } from '@ionic-native/geolocation';
 import { PlacesServiceProvider } from '../providers/places-service/places-service';
 import { AgmCoreModule } from '@agm/core';
@@ -79,7 +78,8 @@ export const firebaseConfig = {
     Camera,
     GeolocateServiceProvider,
     Geolocation,
-    PlacesServiceProvider
+    PlacesServiceProvider,
+    CameraServiceProvider
   ]
 })
 export class AppModule {}

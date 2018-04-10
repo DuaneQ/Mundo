@@ -29,9 +29,9 @@
       </h2>
       <ion-row class="add-background">
         <ion-col>
-          <div [ngSwitch]="photo1">
+          <div [ngSwitch]="this.cameraServiceProvider.photo1">
               <div *ngSwitchDefault>
-                  <img [src]="photo1" (click)="Present('photo1.png')"/>
+                  <img [src]="this.cameraServiceProvider.photo1" (click)="Present('photo1.png')"/>
               </div>
               <div *ngSwitchCase="'UseButton'">
                   <img src="assets/img/add-an-image.png" (click)="selectPhoto('photo1.png')"/>
@@ -39,9 +39,9 @@
           </div>
         </ion-col>
         <ion-col >
-          <div [ngSwitch]="photo2">
+          <div [ngSwitch]="this.cameraServiceProvider.photo2">
               <div *ngSwitchDefault>
-                  <img [src]="photo2" (click)="Present('photo2.png')"/>
+                  <img [src]="this.cameraServiceProvider.photo2" (click)="Present('photo2.png')"/>
               </div>
               <div *ngSwitchCase="'UseButton'">
                   <img src="assets/img/add-an-image.png" (click)="selectPhoto('photo2.png')"/>
@@ -51,9 +51,9 @@
       </ion-row>
       <ion-row class="add-background">
         <ion-col>
-          <div [ngSwitch]="photo3">
+          <div [ngSwitch]="this.cameraServiceProvider.photo3">
               <div *ngSwitchDefault>
-                  <img [src]="photo3" (click)="Present('photo3.png')"/>
+                  <img [src]="this.cameraServiceProvider.photo3" (click)="Present('photo3.png')"/>
               </div>
               <div *ngSwitchCase="'UseButton'">
                   <img src="assets/img/add-an-image.png" (click)="selectPhoto('photo3.png')"/>
@@ -61,9 +61,9 @@
           </div>
         </ion-col>
         <ion-col >
-          <div [ngSwitch]="photo4">
+          <div [ngSwitch]="this.cameraServiceProvider.photo4">
               <div *ngSwitchDefault>
-                  <img [src]="photo4" (click)="Present('photo4.png')"/>
+                  <img [src]="this.cameraServiceProvider.photo4" (click)="Present('photo4.png')"/>
               </div>
               <div *ngSwitchCase="'UseButton'">
                   <img src="assets/img/add-an-image.png" (click)="selectPhoto('photo4.png')"/>
