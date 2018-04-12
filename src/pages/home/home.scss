@@ -37,7 +37,7 @@ img {
     color: black !important;
     font-family: 'Gotham';
     padding:0px;
-	margin-bottom:0px;
+	  margin-bottom:0px;
     margin-top:14px;
     font-weight: bold;
     font-style: normal;
@@ -73,6 +73,14 @@ img {
     padding: 0.5em 0 0.17em 0;
     color: #FFFAFA;
     }
+
+    textarea {
+    width: calc(100% - 10px);
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    text-decoration: none !important;
+  }
 }
 
 .icon {

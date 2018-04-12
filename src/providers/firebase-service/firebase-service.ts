@@ -27,18 +27,20 @@ export class FirebaseServiceProvider {
     });
   }
 
-    addSettings(itineraryType:FirebaseObjectObservable<any>, 
-                maxDistance:FirebaseObjectObservable<any>, 
-                measurement:string,
+    addSettings(location:string, 
+                intPlaces:string[], 
+                bio:any,
                 connectionNotifications:boolean, 
-                messageNotifications:boolean):
+                messageNotifications:boolean,
+                showTrips:boolean):
 
     firebase.Promise<any>{
-    return this.afDatabase.object(`/users/${this.userId}/settings`).set({ itineraryType, 
-                                  maxDistance, 
-                                  measurement, 
+    return this.afDatabase.object(`/users/${this.userId}/settings`).set({ location, 
+                                  intPlaces, 
+                                  bio, 
                                   connectionNotifications, 
-                                  messageNotifications});
+                                  messageNotifications,
+                                  showTrips});
   }
 
     getSettings(): FirebaseObjectObservable<any> {

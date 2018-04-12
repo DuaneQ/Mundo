@@ -6,7 +6,7 @@ import { FirebaseServiceProvider, GeolocateServiceProvider, CameraServiceProvide
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { auth } from 'firebase/app'
-import { SettingsPage, InfoPage } from '../pages'
+import { SettingsPage, InfoPage, LoginPage, PopularPage } from '../pages'
 import { Storage } from '@ionic/storage';
 import { MapsAPILoader } from '@agm/core';
 import { Camera } from '@ionic-native/camera';
@@ -21,6 +21,7 @@ export class HomePage implements OnInit{
   
   @ViewChild('search') public searchElement: ElementRef;
   @ViewChild('searchPlaces') public searchPlacesElement: ElementRef;
+  @ViewChild('myInput') public myInput: ElementRef;
 
   location: string;
   intPlaces:string[] = []; 
@@ -30,7 +31,10 @@ export class HomePage implements OnInit{
   private userId:string;
   connectionNotifications: boolean = true;
   messageNotifications: boolean = true;
+  showTrips: boolean = true;
   public firestore = firebase.storage();
+  private bio: any;
+  private settings: any;
 
   constructor(public navCtrl: NavController,
               private facebook: Facebook,
@@ -135,6 +139,16 @@ export class HomePage implements OnInit{
           this.cameraServiceProvider.photo4 = 'UseButton'
           console.log(this.cameraServiceProvider.photo4);
         });
+
+      this.firebaseSvcProvider.getSettings().subscribe( firebaseSettings => {
+      this.settings = firebaseSettings;
+      this.bio = (typeof this.settings.bio === 'undefined') ? '' : this.settings.bio;
+      this.intPlaces = (typeof this.settings.intPlaces === 'undefined') ? [] : this.settings.intPlaces;
+      this.location = (typeof this.settings.location === 'undefined') ? '' : this.settings.location;
+      this.connectionNotifications = (typeof this.settings.connectionNotifications === 'undefined') ? true : this.settings.connectionNotifications;
+      this.messageNotifications = (typeof this.settings.messageNotifications === 'undefined') ? true : this.settings.messageNotifications;
+      this.showTrips = (typeof this.settings.showTrips === 'undefined') ? true : this.settings.showTrips;
+       });
       }
 
     selectPhoto(photoName: string){
@@ -143,5 +157,27 @@ export class HomePage implements OnInit{
 
     Present(photoName: string){
       this.cameraServiceProvider.Present(photoName);
+    }
+
+    resize() {
+      this.myInput.nativeElement.style.height = this.myInput.nativeElement.scrollHeight + 'px';
+    }
+
+    logoutOfFacebook():firebase.Promise<void> {
+          //const userId:string = firebase.auth().currentUser.uid;
+          //firebase.database().ref('/users/${userId}').off();
+          return firebase.auth().signOut().then(() => {
+            this.navCtrl.setRoot(LoginPage);
+          }); 
+    }
+
+      savePersonalInfo() {
+      this.firebaseSvcProvider.addSettings(this.location,
+                                          this.intPlaces,
+                                          this.bio,
+                                          this.connectionNotifications,
+                                          this.messageNotifications,
+                                          this.showTrips).then(() => {
+            this.navCtrl.setRoot(PopularPage)});
     }
 }

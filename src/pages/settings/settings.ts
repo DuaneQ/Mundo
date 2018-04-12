@@ -45,24 +45,24 @@ export class SettingsPage {
               public facebook: Facebook,) {
   }
 
-  ionViewDidLeave() {
-      this.firebaseSvcProvider.addSettings(this.itineraryType, 
-                                          this.maxDistance, 
-                                          this.measurement, 
-                                          this.connectionNotifications,
-                                          this.messageNotifications);
-    }
+  // ionViewDidLeave() {
+  //     this.firebaseSvcProvider.addSettings(this.itineraryType, 
+  //                                         this.maxDistance, 
+  //                                         this.measurement, 
+  //                                         this.connectionNotifications,
+  //                                         this.messageNotifications);
+  //   }
 
-  ionViewDidLoad() {
-      this.firebaseSvcProvider.getSettings().subscribe( firebaseSettings => {
-      this.settings = firebaseSettings;
-      this.itineraryType = (typeof this.settings.itineraryType === 'undefined') ? 'Groups' : this.settings.itineraryType;
-      this.maxDistance = (typeof this.settings.maxDistance === 'undefined') ? 50 : this.settings.maxDistance;
-      this.measurement = (typeof this.settings.measurement === 'undefined') ? 'Miles' : this.settings.measurement;
-      this.connectionNotifications = (typeof this.settings.connectionNotifications === 'undefined') ? true : this.settings.connectionNotifications;
-      this.messageNotifications = (typeof this.settings.messageNotifications === 'undefined') ? true : this.settings.messageNotifications;
-       });
-    }
+  // ionViewDidLoad() {
+  //     this.firebaseSvcProvider.getSettings().subscribe( firebaseSettings => {
+  //     this.settings = firebaseSettings;
+  //     this.itineraryType = (typeof this.settings.itineraryType === 'undefined') ? 'Groups' : this.settings.itineraryType;
+  //     this.maxDistance = (typeof this.settings.maxDistance === 'undefined') ? 50 : this.settings.maxDistance;
+  //     this.measurement = (typeof this.settings.measurement === 'undefined') ? 'Miles' : this.settings.measurement;
+  //     this.connectionNotifications = (typeof this.settings.connectionNotifications === 'undefined') ? true : this.settings.connectionNotifications;
+  //     this.messageNotifications = (typeof this.settings.messageNotifications === 'undefined') ? true : this.settings.messageNotifications;
+  //      });
+  //   }
 
     sendHelpEmail() {
       let email = {

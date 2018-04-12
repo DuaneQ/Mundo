@@ -6,3 +6,4 @@ export * from './info/info';
 export * from './licenses/licenses';
 export * from './privacypolicy/privacypolicy';
 export * from './terms/terms';
+export * from './popular/popular';

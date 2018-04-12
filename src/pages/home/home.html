@@ -1,5 +1,6 @@
 <ion-header>
   <ion-navbar color="navbar">
+      <ion-title>Profile</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -24,6 +25,12 @@
         <p>
           <input [(ngModel)]="location" placeholder="Enter city" #search> 
         </p>
+      <h2>
+        Enter bio
+      </h2>
+      <p>
+        <textarea #myInput rows="1" maxLength="50" (keyup)="resize()" [(ngModel)]="bio" placeholder="Enter your bio"></textarea>
+      </p>
       <h2>
         Add photos
       </h2>
@@ -87,10 +94,7 @@
           </button>
         </ion-chip>
       </div>
-    <div>
-        <h1>
-          Notifications
-        </h1>
+      <p>Notifications</p>
         <ion-item>
           <ion-label>New Connections</ion-label>
           <ion-toggle [(ngModel)]="connectionNotifications" ></ion-toggle>
@@ -99,8 +103,15 @@
           <ion-label>New Messages</ion-label>
           <ion-toggle [(ngModel)]="messageNotifications" ></ion-toggle>
         </ion-item>
-    </div>
+  <div> 
+      <ion-item>
+        <ion-label>Show trips</ion-label>
+        <ion-toggle [(ngModel)]="showTrips" ></ion-toggle>
+      </ion-item>
   </div>
+  </div>
+      <button ion-button block color="navbar" (click)="savePersonalInfo()">Save</button>
+      <button ion-button block color="navbar" (click)="logoutOfFacebook()">Logout</button>
   <ion-content class="settings">
     <ion-row>
         <img src="assets/img/advanced.png" (click)="goToSettings()"/>
