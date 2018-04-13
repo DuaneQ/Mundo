@@ -80,7 +80,7 @@
     <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
         <string>We want your location!</string>
     </edit-config>
-    <engine name="ios" spec="^4.5.4" />
+    <engine name="ios" spec="4.2.0" />
     <plugin name="cordova-plugin-facebook4" spec="^1.9.1">
         <variable name="APP_ID" value="777129299131788" />
         <variable name="APP_NAME" value="Mundo" />

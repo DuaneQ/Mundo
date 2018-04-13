@@ -180,4 +180,8 @@ export class HomePage implements OnInit{
                                           this.showTrips).then(() => {
             this.navCtrl.setRoot(PopularPage)});
     }
+
+    skipAddingInfo(){
+      this.navCtrl.setRoot(PopularPage);
+    }
 }

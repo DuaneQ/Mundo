@@ -1,6 +1,16 @@
 <ion-header>
-  <ion-navbar color="navbar">
-      <ion-title>Profile</ion-title>
+  <ion-navbar color="navbar" class="navbar">
+      <ion-buttons left>
+          <button ion-button text-only (click)="skipAddingInfo()">
+             Skip
+          </button>
+      </ion-buttons>
+      <ion-title text-center>Profile</ion-title>
+      <ion-buttons right>
+          <button ion-button text-only (click)="savePersonalInfo()">
+              Save
+          </button>
+      </ion-buttons>
   </ion-navbar>
 </ion-header>
 
