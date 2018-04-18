@@ -1,16 +1,10 @@
 import { Component, ViewChild, ElementRef, NgZone, OnInit } from '@angular/core';
-import { NavController, NavParams, ActionSheetController, Platform } from 'ionic-angular';
-import { Facebook } from '@ionic-native/facebook';
+import { NavController } from 'ionic-angular';
 import firebase from 'firebase';
 import { FirebaseServiceProvider, GeolocateServiceProvider, CameraServiceProvider } from '../../providers/providers'
-import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { auth } from 'firebase/app'
-import { SettingsPage, InfoPage, LoginPage, PopularPage } from '../pages'
-import { Storage } from '@ionic/storage';
+import { SettingsPage, InfoPage, LoginPage, PopularPage, MessageCenterPage } from '../pages'
 import { MapsAPILoader } from '@agm/core';
-import { Camera } from '@ionic-native/camera';
-import {} from 'types/googlemaps';
 
 @Component({
   selector: 'page-home',
@@ -26,8 +20,6 @@ export class HomePage implements OnInit{
   location: string;
   intPlaces:string[] = []; 
   private myPhotosRef: any;
-  private myPhoto: any;
-  private myPhotoURL: any;
   private userId:string;
   connectionNotifications: boolean = true;
   messageNotifications: boolean = true;
@@ -35,19 +27,16 @@ export class HomePage implements OnInit{
   public firestore = firebase.storage();
   private bio: any;
   private settings: any;
+  tab1Root = PopularPage;
+  tab2Root = MessageCenterPage;
+  tab3Root = HomePage;
 
   constructor(public navCtrl: NavController,
-              private facebook: Facebook,
               private firebaseSvcProvider: FirebaseServiceProvider,
-              private storage: Storage,
               private geolocate: GeolocateServiceProvider,
               private mapsApiLoader: MapsAPILoader,
               private ngZone: NgZone,
-              private navParams: NavParams,
-              private camera: Camera,
               private afAuth: AngularFireAuth,
-              private actionSheetCtrl: ActionSheetController,
-              private platform: Platform,
               private cameraServiceProvider: CameraServiceProvider) {
 
         this.afAuth.authState.subscribe(user => {

@@ -7,3 +7,5 @@ export * from './licenses/licenses';
 export * from './privacypolicy/privacypolicy';
 export * from './terms/terms';
 export * from './popular/popular';
+export * from './message-center/message-center';
+export * from './tabs/tabs'

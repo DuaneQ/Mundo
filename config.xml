@@ -80,6 +80,8 @@
     <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
         <string>We want your location!</string>
     </edit-config>
+    <allow-navigation href="http://192.168.1.181:8100" />
+    <allow-navigation href="http://169.254.183.17:8100" />
     <engine name="ios" spec="4.2.0" />
     <plugin name="cordova-plugin-facebook4" spec="^1.9.1">
         <variable name="APP_ID" value="777129299131788" />

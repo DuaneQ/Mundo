@@ -1,7 +1,6 @@
-import { NavController, NavParams, ActionSheetController, Platform } from 'ionic-angular';
+import { ActionSheetController, Platform } from 'ionic-angular';
 import { Camera } from '@ionic-native/camera';
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import firebase from 'firebase';
 import { AngularFireAuth } from 'angularfire2/auth';
 import 'rxjs/add/operator/map';

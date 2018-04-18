@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ActionSheetController, Platform } from 'ionic-angular';
 import { FirebaseServiceProvider } from '../../providers/providers'
-import { 
-  AngularFireDatabase, 
-  FirebaseListObservable, 
-  FirebaseObjectObservable } from 'angularfire2/database';
+import { FirebaseObjectObservable } from 'angularfire2/database';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { TermsPage, LicensesPage, PrivacypolicyPage, LoginPage } from '../pages'
 import { Facebook } from '@ionic-native/facebook'

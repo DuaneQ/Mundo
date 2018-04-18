@@ -3,11 +3,7 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import firebase from 'firebase';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { HomePage, ListPage, LoginPage} from '../pages/pages'
-import { IonicStorageModule } from '@ionic/storage';
+import { HomePage, ListPage, LoginPage, TabsPage} from '../pages/pages'
 
 @Component({
   templateUrl: 'app.html'
@@ -36,7 +32,7 @@ export class MyApp {
         this.rootPage = LoginPage;
         unsubscribe();
       } else {
-        this.rootPage = HomePage;
+        this.rootPage = TabsPage;
         unsubscribe();
       }
     });
