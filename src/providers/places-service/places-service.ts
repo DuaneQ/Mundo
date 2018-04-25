@@ -20,25 +20,4 @@ export class PlacesServiceProvider {
   constructor(private mapsApiLoader: MapsAPILoader,
               private ngZone: NgZone) {
   }
-
-  public findPlace(searchElement: ElementRef): string {
-
-        this.mapsApiLoader.load().then(
-        () => {
-          let autocomplete = new google.maps.places.Autocomplete(searchElement.nativeElement, {types:['(cities)']});
-
-          autocomplete.addListener("place_changed", () => {
-            this.ngZone.run(() => {
-                let place: google.maps.places.PlaceResult = autocomplete.getPlace();
-
-                if(place.geometry === undefined || place.geometry === null){
-                  return;
-              }
-                this.place = place.formatted_address;
-              });
-            });
-          }
-        )
-        return this.place;
-    }
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { FirebaseServiceProvider, GeolocateServiceProvider, CameraServiceProvider } from '../../providers/providers'
 
 /**
  * Generated class for the PopularPage page.
@@ -14,11 +15,6 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class PopularPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private geolocate: GeolocateServiceProvider) {
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PopularPage');
-  }
-
 }

@@ -23,7 +23,7 @@
     "@ionic-native/camera": "^4.5.3",
     "@ionic-native/core": "^4.7.0",
     "@ionic-native/email-composer": "^4.4.2",
-    "@ionic-native/facebook": "^4.1.0",
+    "@ionic-native/facebook": "^4.7.0",
     "@ionic-native/geolocation": "^4.6.0",
     "@ionic-native/splash-screen": "3.12.1",
     "@ionic-native/status-bar": "3.12.1",
@@ -37,7 +37,8 @@
     "cordova-plugin-device": "^1.1.4",
     "cordova-plugin-email": "^1.2.6",
     "cordova-plugin-email-composer": "^0.8.11",
-    "cordova-plugin-facebook4": "^1.9.1",
+    "cordova-plugin-facebook": "^0.2.2",
+    "cordova-plugin-facebook4": "^1.10.1",
     "cordova-plugin-geolocation": "^4.0.1",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
     "cordova-plugin-ionic-webview": "^1.1.16",
@@ -65,10 +66,6 @@
   "description": "An Ionic project",
   "cordova": {
     "plugins": {
-      "cordova-plugin-facebook4": {
-        "APP_ID": "777129299131788",
-        "APP_NAME": "Mundo"
-      },
       "cordova-plugin-console": {},
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
@@ -83,6 +80,10 @@
       "cordova-plugin-camera": {},
       "cordova-plugin-geolocation": {
         "GEOLOCATION_USAGE_DESCRIPTION": "To locate you"
+      },
+      "cordova-plugin-facebook4": {
+        "APP_ID": "777129299131788",
+        "APP_NAME": "Mundo"
       }
     },
     "platforms": [

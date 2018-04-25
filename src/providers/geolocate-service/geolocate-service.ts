@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ElementRef } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation';
 
 import 'rxjs/add/operator/map';
@@ -11,6 +11,10 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class GeolocateServiceProvider {
+
+  private searchElement: ElementRef;
+  private searchPlacesElement: ElementRef;
+  private tabRef: any;
 
   constructor(private geolocation: Geolocation) {
   }

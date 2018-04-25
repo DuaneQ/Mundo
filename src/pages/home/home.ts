@@ -93,7 +93,6 @@ export class HomePage implements OnInit{
   }
 
   ionViewDidLoad() {
-      console.log('Did load');
       this.loggedInUser = firebase.auth().currentUser; // code from firebase docs
       this.geolocate.onLocateUser();
 
@@ -129,15 +128,15 @@ export class HomePage implements OnInit{
           console.log(this.cameraServiceProvider.photo4);
         });
 
-      this.firebaseSvcProvider.getSettings().subscribe( firebaseSettings => {
-      this.settings = firebaseSettings;
-      this.bio = (typeof this.settings.bio === 'undefined') ? '' : this.settings.bio;
-      this.intPlaces = (typeof this.settings.intPlaces === 'undefined') ? [] : this.settings.intPlaces;
-      this.location = (typeof this.settings.location === 'undefined') ? '' : this.settings.location;
-      this.connectionNotifications = (typeof this.settings.connectionNotifications === 'undefined') ? true : this.settings.connectionNotifications;
-      this.messageNotifications = (typeof this.settings.messageNotifications === 'undefined') ? true : this.settings.messageNotifications;
-      this.showTrips = (typeof this.settings.showTrips === 'undefined') ? true : this.settings.showTrips;
-       });
+          this.firebaseSvcProvider.getSettings().subscribe( firebaseSettings => {
+          this.settings = firebaseSettings;
+          this.bio = (typeof this.settings.bio === 'undefined') ? '' : this.settings.bio;
+          this.intPlaces = (typeof this.settings.intPlaces === 'undefined') ? [] : this.settings.intPlaces;
+          this.location = (typeof this.settings.location === 'undefined') ? '' : this.settings.location;
+          this.connectionNotifications = (typeof this.settings.connectionNotifications === 'undefined') ? true : this.settings.connectionNotifications;
+          this.messageNotifications = (typeof this.settings.messageNotifications === 'undefined') ? true : this.settings.messageNotifications;
+          this.showTrips = (typeof this.settings.showTrips === 'undefined') ? true : this.settings.showTrips;
+          });
       }
 
     selectPhoto(photoName: string){
@@ -160,17 +159,17 @@ export class HomePage implements OnInit{
           }); 
     }
 
-      savePersonalInfo() {
+    savePersonalInfo() {
       this.firebaseSvcProvider.addSettings(this.location,
                                           this.intPlaces,
                                           this.bio,
                                           this.connectionNotifications,
                                           this.messageNotifications,
                                           this.showTrips).then(() => {
-            this.navCtrl.setRoot(PopularPage)});
+                                          this.navCtrl.parent.select(0)});
     }
 
     skipAddingInfo(){
-      this.navCtrl.setRoot(PopularPage);
+      this.navCtrl.parent.select(0);
     }
 }
