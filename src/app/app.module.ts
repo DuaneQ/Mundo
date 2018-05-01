@@ -4,7 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { FirebaseServiceProvider, LoginServiceProvider, GeolocateServiceProvider, CameraServiceProvider } from '../providers/providers'
 import { HomePage, ListPage, LoginPage, SettingsPage, InfoPage,
-LicensesPage, PrivacypolicyPage, TermsPage, PopularPage, TabsPage, MessageCenterPage} from '../pages/pages'
+LicensesPage, PrivacypolicyPage, TermsPage, PopularPage, TabsPage, MessageCenterPage, ItineraryPage} from '../pages/pages'
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -42,7 +42,8 @@ export const firebaseConfig = {
     PrivacypolicyPage,
     PopularPage,
     TabsPage,
-    MessageCenterPage
+    MessageCenterPage,
+    ItineraryPage
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),
@@ -70,7 +71,8 @@ export const firebaseConfig = {
     PrivacypolicyPage,
     PopularPage,
     TabsPage,
-    MessageCenterPage
+    MessageCenterPage,
+    ItineraryPage
   ],
   providers: [
     StatusBar,

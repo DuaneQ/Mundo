@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { FirebaseServiceProvider, GeolocateServiceProvider, CameraServiceProvider } from '../../providers/providers'
+import { ItineraryPage } from '../pages'
 
 /**
  * Generated class for the PopularPage page.
@@ -15,6 +16,14 @@ import { FirebaseServiceProvider, GeolocateServiceProvider, CameraServiceProvide
 })
 export class PopularPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private geolocate: GeolocateServiceProvider) {
+  constructor(private navCtrl: NavController, 
+              private navParams: NavParams, 
+              private modal: ModalController) {
+  }
+
+  openModal(){
+    const myModal = this.modal.create(ItineraryPage);
+
+    myModal.present();
   }
 }
