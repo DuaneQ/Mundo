@@ -19,5 +19,14 @@
 
 
 <ion-content padding>
-
+  <ion-item>
+    <ion-label>Start date</ion-label>
+    <ion-datetime displayFormat="MM-DD-YYYY" [(ngModel)]="startDate"></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label>End date</ion-label>
+    <ion-datetime displayFormat="MM-DD-YYYY" [(ngModel)]="endDate"></ion-datetime>
+  </ion-item>
+      <ion-label>Destination</ion-label>
+      <input [(ngModel)]="destination" placeholder="Enter destination" #destin> 
 </ion-content>
