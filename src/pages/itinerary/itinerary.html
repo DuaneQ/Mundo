@@ -14,19 +14,35 @@
           </button>      
         </ion-buttons>  
   </ion-navbar>
-
 </ion-header>
 
-
-<ion-content padding>
-  <ion-item>
-    <ion-label>Start date</ion-label>
-    <ion-datetime displayFormat="MM-DD-YYYY" [(ngModel)]="startDate"></ion-datetime>
-  </ion-item>
-  <ion-item>
-    <ion-label>End date</ion-label>
-    <ion-datetime displayFormat="MM-DD-YYYY" [(ngModel)]="endDate"></ion-datetime>
-  </ion-item>
-      <ion-label>Destination</ion-label>
-      <input [(ngModel)]="destination" placeholder="Enter destination" #destin> 
-</ion-content>
+<ion-card padding class="ion-cards">
+  <ion-card-content padding>
+    <ion-item>
+      <ion-label>Start date</ion-label>
+      <ion-datetime displayFormat="MM-DD-YYYY" [(ngModel)]="startDate"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>End date</ion-label>
+      <ion-datetime displayFormat="MM-DD-YYYY" [(ngModel)]="endDate"></ion-datetime>
+    </ion-item>
+        <ion-label>Destination</ion-label>
+        <input [(ngModel)]="destination" placeholder="Enter destination" #destin>
+        <div> 
+          <ion-label>Activities</ion-label>
+          <div>
+          <input type="text" [(ngModel)]="addActivities" (keyup.enter)="addActivity()" 
+                  placeholder="Enter activity">
+          </div>
+          <div padding>
+            <ion-chip *ngFor="let activity of activities">
+              <ion-label>{{ activity }}</ion-label>
+              <button (click)="deleteActivity(activity)">
+                <img src="assets/img/ic-small-close.png"/>
+              </button>
+            </ion-chip>
+          </div>
+        </div> 
+        <button ion-button round color="navbar" (click)="saveItinerary()">Save</button>
+  </ion-card-content>
+</ion-card>

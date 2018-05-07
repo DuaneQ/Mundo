@@ -1,6 +1,8 @@
 import { Component, ViewChild, ElementRef, NgZone, OnInit } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { MapsAPILoader } from '@agm/core';
+import { FirebaseServiceProvider } from '../../providers/providers'
+import { IItinerary } from '../../models/itinerary'
 
 /**
  * Generated class for the ItineraryPage page.
@@ -18,6 +20,9 @@ export class ItineraryPage implements OnInit{
   startDate: string = new Date().toISOString();
   endDate: string = new Date().toISOString();
   destination: string;
+  activities:string[] = []; 
+  addActivities:string;
+  itinerary: IItinerary;
 
   @ViewChild('destin') public destinElement: ElementRef;
 
@@ -25,7 +30,8 @@ export class ItineraryPage implements OnInit{
               private navParams: NavParams,
               private mapsApiLoader: MapsAPILoader,
               private ngZone: NgZone,
-              private view: ViewController) {
+              private view: ViewController,
+              private firebaseSvcProvider: FirebaseServiceProvider) {
   }
 
   ngOnInit(){
@@ -41,13 +47,33 @@ export class ItineraryPage implements OnInit{
                   return;
               }
                 this.destination = place.formatted_address;
+                console.log(this.destination);
+                this.itinerary.location = this.destination;
+                console.log('itinerary ' + this.itinerary.location);
               });
             });
           }
         )
     }
 
+  addActivity() {
+        this.activities.push(this.addActivities);
+        console.log(this.activities[0]);
+        this.itinerary.activities = this.activities;
+        console.log('itinerary loc ' + this.itinerary.activities);
+  }
+
   closeModal(){
     this.view.dismiss();
+  }
+
+  deleteActivity(activity) {
+        this.activities.splice(this.activities.indexOf(activity),1);
+  }
+
+  saveItinerary() {
+    // this.firebaseSvcProvider.addItinerary(this.itinerary).then(() => {
+    //                                       this.view.dismiss()});
+        this.view.dismiss();
   }
 }

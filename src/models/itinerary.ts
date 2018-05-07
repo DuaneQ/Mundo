@@ -1,5 +1,6 @@
 export interface IItinerary{
-    date: Date;
+    startDate: Date;
+    endDate: Date;
     location: string;
     activities: string[];
 }

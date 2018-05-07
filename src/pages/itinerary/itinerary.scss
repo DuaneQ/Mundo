@@ -8,4 +8,12 @@ page-itinerary {
     input{
         border: none;
     }
+
+    .ion-cards{
+        ion-card {
+        margin-top:20px !important;
+        padding-top: 50px !important;
+        border-top: 20;
+        }
+    }
 }
