@@ -96,6 +96,14 @@ export class HomePage implements OnInit{
       this.loggedInUser = firebase.auth().currentUser; // code from firebase docs
       this.geolocate.onLocateUser();
 
+      this.firestore.ref(`/Photos/${ this.userId }/`).child('photo0.png').getDownloadURL().then((url) => {
+          this.cameraServiceProvider.photo0 = url;
+        }).catch((error) => {
+          console.log(error.message);
+          this.cameraServiceProvider.photo0 = 'UseButton'
+          console.log(this.cameraServiceProvider.photo0);
+        });
+
       this.firestore.ref(`/Photos/${ this.userId }/`).child('photo1.png').getDownloadURL().then((url) => {
           this.cameraServiceProvider.photo1 = url;
         }).catch((error) => {

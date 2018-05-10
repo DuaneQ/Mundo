@@ -15,96 +15,109 @@
 </ion-header>
 
 <ion-content padding class="profilePhoto center-text" *ngIf="loggedInUser">
-  <div>
-<!--  <div class="cameraIcon">
-    <img src="assets/img/ic-camera.png"/>
-  </div>-->
-    <img [src]="loggedInUser.photoURL"/>
-    <h1>
-      Background Info
-    </h1>
-      <h2>
-        Name
-      </h2>
-        <p>
-          {{ loggedInUser.displayName }}
-        </p>
-      <h2>
-        City
-      </h2>
-        <p>
+    <ion-card class="prflBg">
+      <ion-card-content >
+            <div [ngSwitch]="this.cameraServiceProvider.photo0">
+                <div *ngSwitchDefault>
+                    <img [src]="this.cameraServiceProvider.photo0" (click)="Present('photo0.png')"/>
+                </div>
+                <div *ngSwitchCase="'UseButton'">
+                    <img src="assets/img/add-an-image.png" (click)="selectPhoto('photo0.png')"/>
+                </div>      
+            </div>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <ion-label>Background Info</ion-label>
+      </ion-card-content>
+      <ion-card-content>
+        <ion-label>Name</ion-label>
+        <ion-label>{{ loggedInUser.displayName }}</ion-label>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <ion-label>City</ion-label>
           <input [(ngModel)]="location" placeholder="Enter city" #search> 
-        </p>
-      <h2>
-        Enter bio
-      </h2>
-      <p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <ion-label>Enter bio</ion-label>
         <textarea #myInput rows="1" maxLength="50" (keyup)="resize()" [(ngModel)]="bio" placeholder="Enter your bio"></textarea>
-      </p>
-      <h2>
-        Add photos
-      </h2>
-      <ion-row class="add-background">
-        <ion-col>
-          <div [ngSwitch]="this.cameraServiceProvider.photo1">
-              <div *ngSwitchDefault>
-                  <img [src]="this.cameraServiceProvider.photo1" (click)="Present('photo1.png')"/>
-              </div>
-              <div *ngSwitchCase="'UseButton'">
-                  <img src="assets/img/add-an-image.png" (click)="selectPhoto('photo1.png')"/>
-              </div>      
-          </div>
-        </ion-col>
-        <ion-col >
-          <div [ngSwitch]="this.cameraServiceProvider.photo2">
-              <div *ngSwitchDefault>
-                  <img [src]="this.cameraServiceProvider.photo2" (click)="Present('photo2.png')"/>
-              </div>
-              <div *ngSwitchCase="'UseButton'">
-                  <img src="assets/img/add-an-image.png" (click)="selectPhoto('photo2.png')"/>
-              </div>      
-          </div>
-        </ion-col>
-      </ion-row>
-      <ion-row class="add-background">
-        <ion-col>
-          <div [ngSwitch]="this.cameraServiceProvider.photo3">
-              <div *ngSwitchDefault>
-                  <img [src]="this.cameraServiceProvider.photo3" (click)="Present('photo3.png')"/>
-              </div>
-              <div *ngSwitchCase="'UseButton'">
-                  <img src="assets/img/add-an-image.png" (click)="selectPhoto('photo3.png')"/>
-              </div>      
-          </div>
-        </ion-col>
-        <ion-col >
-          <div [ngSwitch]="this.cameraServiceProvider.photo4">
-              <div *ngSwitchDefault>
-                  <img [src]="this.cameraServiceProvider.photo4" (click)="Present('photo4.png')"/>
-              </div>
-              <div *ngSwitchCase="'UseButton'">
-                  <img src="assets/img/add-an-image.png" (click)="selectPhoto('photo4.png')"/>
-              </div>      
-          </div>
-        </ion-col>
-      </ion-row>
-      <div>
-      </div>
-      <h2>
-        Interested destinations
-      </h2>        
-      <p>
-          <input placeholder="Enter city" #searchPlaces> 
-      </p>
-      <div padding class="selected-places">
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+        <ion-label>Add photos</ion-label>
+        <ion-row class="add-background">
+          <ion-col>
+            <div [ngSwitch]="this.cameraServiceProvider.photo1">
+                <div *ngSwitchDefault>
+                    <img [src]="this.cameraServiceProvider.photo1" (click)="Present('photo1.png')"/>
+                </div>
+                <div *ngSwitchCase="'UseButton'">
+                    <img src="assets/img/add-an-image.png" (click)="selectPhoto('photo1.png')"/>
+                </div>      
+            </div>
+          </ion-col>
+          <ion-col >
+            <div [ngSwitch]="this.cameraServiceProvider.photo2">
+                <div *ngSwitchDefault>
+                    <img [src]="this.cameraServiceProvider.photo2" (click)="Present('photo2.png')"/>
+                </div>
+                <div *ngSwitchCase="'UseButton'">
+                    <img src="assets/img/add-an-image.png" (click)="selectPhoto('photo2.png')"/>
+                </div>      
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row class="add-background">
+          <ion-col>
+            <div [ngSwitch]="this.cameraServiceProvider.photo3">
+                <div *ngSwitchDefault>
+                    <img [src]="this.cameraServiceProvider.photo3" (click)="Present('photo3.png')"/>
+                </div>
+                <div *ngSwitchCase="'UseButton'">
+                    <img src="assets/img/add-an-image.png" (click)="selectPhoto('photo3.png')"/>
+                </div>      
+            </div>
+          </ion-col>
+          <ion-col >
+            <div [ngSwitch]="this.cameraServiceProvider.photo4">
+                <div *ngSwitchDefault>
+                    <img [src]="this.cameraServiceProvider.photo4" (click)="Present('photo4.png')"/>
+                </div>
+                <div *ngSwitchCase="'UseButton'">
+                    <img src="assets/img/add-an-image.png" (click)="selectPhoto('photo4.png')"/>
+                </div>      
+            </div>
+          </ion-col>
+        </ion-row>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <ion-label>Interested destinations</ion-label>
+          <input placeholder="Enter city" #searchPlaces>
+        <div padding class="selected-places">
         <ion-chip *ngFor="let intPlace of intPlaces">
           <ion-label>{{ intPlace }}</ion-label>
           <button (click)="deletePlace(intPlace)">
             <img src="assets/img/ic-small-close.png"/>
           </button>
         </ion-chip>
-      </div>
-      <p>Notifications</p>
+      </div> 
+      </ion-card-content>
+    </ion-card>
+
+   <ion-card>
+    <ion-card-content class="toggleLabel">
+       <ion-label>Notifications</ion-label>
         <ion-item>
           <ion-label>New Connections</ion-label>
           <ion-toggle [(ngModel)]="connectionNotifications" ></ion-toggle>
@@ -113,15 +126,16 @@
           <ion-label>New Messages</ion-label>
           <ion-toggle [(ngModel)]="messageNotifications" ></ion-toggle>
         </ion-item>
-  <div> 
-      <ion-item>
+        <ion-item>
         <ion-label>Show trips</ion-label>
         <ion-toggle [(ngModel)]="showTrips" ></ion-toggle>
       </ion-item>
-  </div>
-  </div>
+    </ion-card-content> 
+  </ion-card>
+
       <button ion-button block color="navbar" (click)="savePersonalInfo()">Save</button>
       <button ion-button block color="navbar" (click)="logoutOfFacebook()">Logout</button>
+
   <ion-content class="settings">
     <ion-row>
         <img src="assets/img/advanced.png" (click)="goToSettings()"/>
@@ -129,9 +143,4 @@
     </ion-row>
   </ion-content>
 </ion-content>
-<!--<ion-tabs>
-  <ion-tab [root]="tab1Root"></ion-tab>
-  <ion-tab [root]="tab2Root"></ion-tab>
-  <ion-tab [root]="tab3Root"></ion-tab>
-</ion-tabs>-->
 

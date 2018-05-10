@@ -82,7 +82,6 @@
     </edit-config>
     <allow-navigation href="http://192.168.1.181:8100" />
     <allow-navigation href="http://169.254.183.17:8100" />
-    <engine name="ios" spec="4.2.0" />
     <engine name="android" spec="6.3.0" />
     <plugin name="cordova-plugin-console" spec="^1.1.0" />
     <plugin name="cordova-plugin-device" spec="^1.1.7" />
@@ -104,4 +103,5 @@
         <variable name="APP_NAME" value="Mundo" />
     </plugin>
     <plugin name="cordova-plugin-datepicker" spec="^0.9.3" />
+    <engine name="ios" spec="~4.2.0" />
 </widget>

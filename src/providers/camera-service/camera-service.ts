@@ -22,7 +22,7 @@ export class CameraServiceProvider {
   public photo2: any;
   public photo3: any;
   public photo4: any;
-  public photo5: any;
+  public photo0: any;
   private firestore = firebase.storage();
   loggedInUser: any = null;
 
@@ -63,6 +63,16 @@ export class CameraServiceProvider {
   //Changes the button to the pic after upload.
       changeFromButtonToPic(photo: string){
         switch(photo) { 
+          case 'photo0.png': { 
+            this.firestore.ref(`/Photos/${ this.userId }/`).child('photo0.png').getDownloadURL().then((url) => {
+                this.photo0 = url;
+              }).catch((error) => {
+                console.log(error.message);
+                console.log(this.photo0);
+              });
+              break; 
+          }
+
           case 'photo1.png': { 
             this.firestore.ref(`/Photos/${ this.userId }/`).child('photo1.png').getDownloadURL().then((url) => {
                 this.photo1 = url;
@@ -122,6 +132,11 @@ export class CameraServiceProvider {
       //Changes the pic to the button after upload.
       ChangeFromPicToButton(photo: string){
         switch(photo) { 
+          case 'photo0.png': { 
+            this.photo0 = 'UseButton'
+            break; 
+          } 
+
           case 'photo1.png': { 
             this.photo1 = 'UseButton'
             break; 
