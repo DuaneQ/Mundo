@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database'
+import { AngularFireDatabase, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2/database'
 import { IItinerary } from '../../models/itinerary'
 
 import 'rxjs/add/operator/map';
@@ -19,6 +19,7 @@ export class FirebaseServiceProvider {
   public userId:string;
   public setSettings :any;
   public setItineraries: any;
+  public itineraryRef: FirebaseListObservable<IItinerary[]>;
 
   constructor(public afAuth:AngularFireAuth,
               public afDatabase: AngularFireDatabase) {
@@ -26,6 +27,7 @@ export class FirebaseServiceProvider {
     this.userId = user.uid
     this.setSettings = this.afDatabase.database.ref(`/users/${user.uid}/settings`);
     this.setItineraries = this.afDatabase.database.ref(`/itineraries/${user.uid}/itinerary`);
+    this.itineraryRef = this.afDatabase.list(`/itineraries/`);
     });
   }
 
@@ -52,6 +54,11 @@ export class FirebaseServiceProvider {
     addItinerary(itinerary: IItinerary):
 
     firebase.Promise<any>{
-    return this.afDatabase.object(`/itineraries/${this.userId}/itinerary`).set({ itinerary});
-    }
+    return this.afDatabase.list(`/itineraries/`).push({ itinerary});
+  }
+
+    getItineraryList():FirebaseListObservable<IItinerary[]> {
+      return this.itineraryRef;
+  }
+  
 }

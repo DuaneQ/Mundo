@@ -3,6 +3,7 @@ import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { MapsAPILoader } from '@agm/core';
 import { FirebaseServiceProvider } from '../../providers/providers'
 import { IItinerary } from '../../models/itinerary'
+import { AngularFireDatabase, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2/database'
 
 /**
  * Generated class for the ItineraryPage page.
@@ -22,7 +23,7 @@ export class ItineraryPage implements OnInit{
   destination: string;
   activities:string[] = []; 
   addActivities:string;
-  itinerary: IItinerary;
+  itineraryList$: FirebaseListObservable<IItinerary[]>;
 
   @ViewChild('destin') public destinElement: ElementRef;
 
@@ -31,7 +32,9 @@ export class ItineraryPage implements OnInit{
               private mapsApiLoader: MapsAPILoader,
               private ngZone: NgZone,
               private view: ViewController,
-              private firebaseSvcProvider: FirebaseServiceProvider) {
+              private firebaseSvcProvider: FirebaseServiceProvider,
+              public afDatabase: AngularFireDatabase) {
+              this.itineraryList$ =  this.afDatabase.list(`/itineraries/`);
   }
 
   ngOnInit(){
@@ -47,9 +50,6 @@ export class ItineraryPage implements OnInit{
                   return;
               }
                 this.destination = place.formatted_address;
-                console.log(this.destination);
-                this.itinerary.location = this.destination;
-                console.log('itinerary ' + this.itinerary.location);
               });
             });
           }
@@ -58,9 +58,6 @@ export class ItineraryPage implements OnInit{
 
   addActivity() {
         this.activities.push(this.addActivities);
-        console.log(this.activities[0]);
-        this.itinerary.activities = this.activities;
-        console.log('itinerary loc ' + this.itinerary.activities);
   }
 
   closeModal(){
@@ -72,8 +69,35 @@ export class ItineraryPage implements OnInit{
   }
 
   saveItinerary() {
-    // this.firebaseSvcProvider.addItinerary(this.itinerary).then(() => {
-    //                                       this.view.dismiss()});
-        this.view.dismiss();
+    let itinerary: IItinerary = {
+        startDate: this.startDate,
+        endDate: this.endDate,
+        destination: this.destination,
+        activities: this.activities
+    }
+    this.firebaseSvcProvider.addItinerary(itinerary).then(() => {
+                                          this.view.dismiss()});
+  }
+
+  // ionViewDidLoad() {
+  //   this.firebaseSvcProvider.getItineraryList().on('value', itineraryListSnapshot => {
+  //     this.itineraryList = [];
+  //         itineraryListSnapshot.forEach( snap => {
+  //           let currItinerary: IItinerary = {
+  //           startDate: snap.val().startDate,
+  //           endDate: snap.val().endDate,
+  //           destination: snap.val().destination,
+  //           activities: snap.val().activities,
+  //         };
+  //       this.itineraryList.push(currItinerary);
+  //       console.log(this.itineraryList[0].destination + ' log intinerary list');
+  //       console.log(currItinerary.destination + ' log intinerary');
+  //       console.log(snap.val().destination + ' log snap');
+  //       return false;
+  //     });
+  //   });
+  // }
+
+  ionViewDidLoad(){
   }
 }

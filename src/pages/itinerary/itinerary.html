@@ -46,3 +46,15 @@
         <button ion-button round color="navbar" (click)="saveItinerary()">Save</button>
   </ion-card-content>
 </ion-card>
+
+<ion-card>
+  <ion-content padding>
+    <ion-list >
+      <ion-item *ngFor="let userItinerary of itineraryList$ | async">
+      <h2>Destination: {{userItinerary.itinerary.destination}}</h2>
+      <h2>Start date: {{userItinerary.itinerary.startDate}}</h2>
+      <h2>End Date: {{userItinerary.itinerary.endDate}}</h2>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-card>

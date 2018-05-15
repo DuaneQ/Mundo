@@ -1,6 +1,6 @@
 export interface IItinerary{
-    startDate: Date;
-    endDate: Date;
-    location: string;
+    startDate: String;
+    endDate: String;
+    destination: string;
     activities: string[];
 }
