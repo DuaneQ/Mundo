@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { IndividMatchPage } from '../pages'
 
 /**
  * Generated class for the MatchesPage page.
@@ -13,6 +14,9 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'matches.html',
 })
 export class MatchesPage {
+
+  tab1Root = MatchesPage;
+  tab2Root = IndividMatchPage;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }

@@ -6,13 +6,23 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>matches</ion-title>
+  <ion-navbar color="navbar">
+    <ion-title>Find</ion-title>
   </ion-navbar>
 
 </ion-header>
 
+<ion-tabs #myTabs>
+  <ion-tab [root]="tab4Root" tabTitle="Match" tabIcon="star-outline"></ion-tab>
+  <ion-tab [root]="tab5Root" tabTitle="My itineraries" tabIcon="mail"></ion-tab>
+</ion-tabs>
 
+<a class="tab-item">
+  Match
+</a>
+<a class="tab-item">
+  My itineraries
+</a>
 <ion-content padding>
 
 </ion-content>

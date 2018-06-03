@@ -8,5 +8,7 @@ export * from './privacypolicy/privacypolicy';
 export * from './terms/terms';
 export * from './popular/popular';
 export * from './message-center/message-center';
-export * from './tabs/tabs'
-export * from './itinerary/itinerary'
+export * from './tabs/tabs';
+export * from './itinerary/itinerary';
+export * from './matches/matches';
+export * from './individ-match/individ-match';

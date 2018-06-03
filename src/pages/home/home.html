@@ -14,7 +14,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="profilePhoto center-text" *ngIf="loggedInUser">
+<ion-content no-padding class="profilePhoto center-text" *ngIf="loggedInUser">
     <ion-card class="prflBg">
       <ion-card-content >
             <div [ngSwitch]="this.cameraServiceProvider.photo0">

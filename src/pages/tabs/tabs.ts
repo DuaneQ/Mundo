@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { PopularPage, MessageCenterPage, HomePage } from '../pages'
+import { PopularPage, MatchesPage, HomePage, } from '../pages'
 
 
 @Component({
@@ -9,7 +9,7 @@ import { PopularPage, MessageCenterPage, HomePage } from '../pages'
 export class TabsPage {
 
   tab1Root = PopularPage;
-  tab2Root = MessageCenterPage;
+  tab2Root = MatchesPage;
   tab3Root = HomePage;
 
   constructor() {

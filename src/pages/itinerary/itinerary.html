@@ -16,24 +16,26 @@
   </ion-navbar>
 </ion-header>
 
+<ion-content class="cards-bg">
 <ion-card padding class="ion-cards">
   <ion-card-content padding>
     <ion-item>
       <ion-label>Start date</ion-label>
-      <ion-datetime displayFormat="MM-DD-YYYY" [(ngModel)]="startDate"></ion-datetime>
+      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="startDate"></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label>End date</ion-label>
-      <ion-datetime displayFormat="MM-DD-YYYY" [(ngModel)]="endDate"></ion-datetime>
+      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="endDate"></ion-datetime>
     </ion-item>
+    <ion-row>
         <ion-label>Destination</ion-label>
         <input [(ngModel)]="destination" placeholder="Enter destination" #destin>
-        <div> 
+    </ion-row>
+    <ion-row>
           <ion-label>Activities</ion-label>
-          <div>
-          <input type="text" [(ngModel)]="addActivities" (keyup.enter)="addActivity()" 
-                  placeholder="Enter activity">
-          </div>
+          <ion-input type="text" [(ngModel)]="addActivities" (keyup.enter)="addActivity()" 
+                  placeholder="Enter activity"></ion-input>
+    </ion-row>
           <div padding>
             <ion-chip *ngFor="let activity of activities">
               <ion-label>{{ activity }}</ion-label>
@@ -42,19 +44,42 @@
               </button>
             </ion-chip>
           </div>
-        </div> 
         <button ion-button round color="navbar" (click)="saveItinerary()">Save</button>
   </ion-card-content>
 </ion-card>
 
-<ion-card>
-  <ion-content padding>
-    <ion-list >
-      <ion-item *ngFor="let userItinerary of itineraryList$ | async">
-      <h2>Destination: {{userItinerary.itinerary.destination}}</h2>
-      <h2>Start date: {{userItinerary.itinerary.startDate}}</h2>
-      <h2>End Date: {{userItinerary.itinerary.endDate}}</h2>
-      </ion-item>
-    </ion-list>
+  <div *ngFor="let userItinerary of itineraryList$ | async">
+    <ion-card class="itinerary-module">
+        <ion-item>
+                <div>
+                    <img src="this.cameraServiceProvider.photo0"/>
+                </div>   
+            <h2>Marty McFly</h2>
+        </ion-item>
+
+        <ion-card-content>
+          <ion-label>Destination</ion-label>
+          <h2>{{userItinerary.itinerary.destination}}</h2>
+          <ion-row>
+            <ion-col>
+              <ion-label>Start date</ion-label>
+              <h2>{{userItinerary.itinerary.startDate | date: "MM/dd/yyyy"}}</h2>
+            </ion-col>
+            <ion-col>
+              <ion-label>End date</ion-label>
+              <h2>{{userItinerary.itinerary.endDate | date: "MM/dd/yyyy"}}</h2>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+
+        <ion-row>
+          <ion-col>
+            <button ion-button icon-left clear small>
+              <ion-icon name="thumbs-up"></ion-icon>
+              <div>12 Likes</div>
+            </button>
+          </ion-col>
+        </ion-row>
+    </ion-card>
+  </div>
   </ion-content>
-</ion-card>

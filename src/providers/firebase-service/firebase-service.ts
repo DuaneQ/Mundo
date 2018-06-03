@@ -30,6 +30,9 @@ export class FirebaseServiceProvider {
     this.itineraryRef = this.afDatabase.list(`/itineraries/`);
     });
   }
+    getUserId(): string{
+      return this.userId;
+    }
 
     addSettings(location:string, 
                 intPlaces:string[], 

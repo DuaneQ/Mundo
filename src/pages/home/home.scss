@@ -11,8 +11,13 @@ img {
     .prflBg {
         ion-card-content{
         background-image: url('../assets/img/headerBg.png');
-        background-size: 320px 158px;
-        object-fit: contain !important;
+        background-size: 760px 158px;
+        background-repeat: no-repeat;
+        width: 100% !important;
+        overflow: visible !important;
+        padding-top: 25px !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
         }
     }
 }
