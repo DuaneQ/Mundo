@@ -1,4 +1,4 @@
-import { Injectable, ElementRef, NgZone } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
 import {} from 'tpes/googlemaps';
 import 'rxjs/add/operator/map';
@@ -17,7 +17,6 @@ export class PlacesServiceProvider {
   
   place: string;
 
-  constructor(private mapsApiLoader: MapsAPILoader,
-              private ngZone: NgZone) {
+  constructor(private mapsApiLoader: MapsAPILoader) {
   }
 }

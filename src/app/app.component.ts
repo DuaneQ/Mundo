@@ -3,7 +3,7 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import firebase from 'firebase';
-import { HomePage, ListPage, LoginPage, TabsPage} from '../pages/pages'
+import { HomePage, LoginPage, TabsPage} from '../pages/pages'
 
 @Component({
   templateUrl: 'app.html'

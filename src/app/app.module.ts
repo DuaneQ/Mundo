@@ -3,7 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { FirebaseServiceProvider, LoginServiceProvider, GeolocateServiceProvider, CameraServiceProvider } from '../providers/providers'
-import { HomePage, ListPage, LoginPage, SettingsPage, InfoPage,
+import { HomePage, LoginPage, SettingsPage, InfoPage,
 LicensesPage, PrivacypolicyPage, TermsPage, PopularPage, TabsPage, 
 MessageCenterPage, ItineraryPage, MatchesPage, IndividMatchPage} from '../pages/pages'
 import { AngularFireModule } from 'angularfire2';
@@ -19,6 +19,7 @@ import { Camera } from '@ionic-native/camera';
 import { Geolocation } from '@ionic-native/geolocation';
 import { PlacesServiceProvider } from '../providers/places-service/places-service';
 import { AgmCoreModule } from '@agm/core';
+import { SwipeSegmentDirective } from '../directives/swipe-segment.directive';
 
 // AF2 Settings
 export const firebaseConfig = {
@@ -34,7 +35,6 @@ export const firebaseConfig = {
   declarations: [
     MyApp,
     HomePage,
-    ListPage,
     LoginPage,
     SettingsPage,
     InfoPage,
@@ -46,7 +46,8 @@ export const firebaseConfig = {
     MessageCenterPage,
     ItineraryPage,
     MatchesPage,
-    IndividMatchPage
+    IndividMatchPage,
+    SwipeSegmentDirective
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),
@@ -65,7 +66,6 @@ export const firebaseConfig = {
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage,
     LoginPage,
     SettingsPage,
     InfoPage,

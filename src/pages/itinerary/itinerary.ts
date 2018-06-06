@@ -3,7 +3,7 @@ import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { MapsAPILoader } from '@agm/core';
 import { FirebaseServiceProvider } from '../../providers/providers'
 import { IItinerary } from '../../models/itinerary'
-import { AngularFireDatabase, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2/database'
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database'
 
 /**
  * Generated class for the ItineraryPage page.
@@ -27,9 +27,7 @@ export class ItineraryPage implements OnInit{
 
   @ViewChild('destin') public destinElement: ElementRef;
 
-  constructor(private navCtrl: NavController, 
-              private navParams: NavParams,
-              private mapsApiLoader: MapsAPILoader,
+  constructor(private mapsApiLoader: MapsAPILoader,
               private ngZone: NgZone,
               private view: ViewController,
               private firebaseSvcProvider: FirebaseServiceProvider,
@@ -77,27 +75,5 @@ export class ItineraryPage implements OnInit{
     }
     this.firebaseSvcProvider.addItinerary(itinerary).then(() => {
                                           this.view.dismiss()});
-  }
-
-  // ionViewDidLoad() {
-  //   this.firebaseSvcProvider.getItineraryList().on('value', itineraryListSnapshot => {
-  //     this.itineraryList = [];
-  //         itineraryListSnapshot.forEach( snap => {
-  //           let currItinerary: IItinerary = {
-  //           startDate: snap.val().startDate,
-  //           endDate: snap.val().endDate,
-  //           destination: snap.val().destination,
-  //           activities: snap.val().activities,
-  //         };
-  //       this.itineraryList.push(currItinerary);
-  //       console.log(this.itineraryList[0].destination + ' log intinerary list');
-  //       console.log(currItinerary.destination + ' log intinerary');
-  //       console.log(snap.val().destination + ' log snap');
-  //       return false;
-  //     });
-  //   });
-  // }
-
-  ionViewDidLoad(){
   }
 }

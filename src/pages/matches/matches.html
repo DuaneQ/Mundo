@@ -1,28 +1,85 @@
-<!--
-  Generated template for the MatchesPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar color="navbar">
-    <ion-title>Find</ion-title>
+  <ion-navbar color="navbar" no-border-bottom>
+    <ion-title>
+      Find itineraries
+    </ion-title>
   </ion-navbar>
 
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="category">
+      <ion-segment-button value="findMatch">
+        Find itineraries
+      </ion-segment-button>
+      <ion-segment-button value="myItin">
+        My itineraries
+      </ion-segment-button>
+      <ion-segment-button value="matches">
+        Matching itineraries
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 </ion-header>
 
-<ion-tabs #myTabs>
-  <ion-tab [root]="tab4Root" tabTitle="Match" tabIcon="star-outline"></ion-tab>
-  <ion-tab [root]="tab5Root" tabTitle="My itineraries" tabIcon="mail"></ion-tab>
-</ion-tabs>
+<ion-content>
+  <div [ngSwitch]="category" swipeSegment [tabsList]="categories" [(currentTab)]="category" (tabChanged)="onTabChanged($event)" class="swipe-area">
+    <ion-list *ngSwitchCase="'findMatch'">
+      <ion-item>
+        Batman Begins
+      </ion-item>
+      <ion-item>
+        Transporter
+      </ion-item>
+      <ion-item>
+        Million Dollar Baby
+      </ion-item>
+    </ion-list>
 
-<a class="tab-item">
-  Match
-</a>
-<a class="tab-item">
-  My itineraries
-</a>
-<ion-content padding>
+    <ion-list *ngSwitchCase="'myItin'">
+      <div *ngFor="let userItinerary of itineraryList$ | async">
+        <ion-card class="itinerary-module">
+            <ion-item>
+                    <div>
+                    </div>   
+                <h2>Marty McFly</h2>
+            </ion-item>
 
+            <ion-card-content>
+              <ion-label>Destination</ion-label>
+              <h2>{{userItinerary.itinerary.destination}}</h2>
+              <ion-row>
+                <ion-col>
+                  <ion-label>Start date</ion-label>
+                  <h2>{{userItinerary.itinerary.startDate | date: "MM/dd/yyyy"}}</h2>
+                </ion-col>
+                <ion-col>
+                  <ion-label>End date</ion-label>
+                  <h2>{{userItinerary.itinerary.endDate | date: "MM/dd/yyyy"}}</h2>
+                </ion-col>
+              </ion-row>
+            </ion-card-content>
+
+            <ion-row>
+              <ion-col>
+                <button ion-button icon-left clear small>
+                  <ion-icon name="thumbs-up"></ion-icon>
+                  <div>12 Likes</div>
+                </button>
+              </ion-col>
+            </ion-row>
+        </ion-card>
+      </div>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'matches'">
+      <ion-item>
+        Ice Age
+      </ion-item>
+      <ion-item>
+        Lion King
+      </ion-item>
+      <ion-item>
+        Up
+      </ion-item>
+    </ion-list>
+  </div>
 </ion-content>

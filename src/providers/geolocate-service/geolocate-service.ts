@@ -12,10 +12,6 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class GeolocateServiceProvider {
 
-  private searchElement: ElementRef;
-  private searchPlacesElement: ElementRef;
-  private tabRef: any;
-
   constructor(private geolocation: Geolocation) {
   }
 

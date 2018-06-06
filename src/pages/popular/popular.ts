@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
-import { FirebaseServiceProvider, GeolocateServiceProvider, CameraServiceProvider } from '../../providers/providers'
 import { ItineraryPage } from '../pages'
 
 /**
@@ -17,7 +16,6 @@ import { ItineraryPage } from '../pages'
 export class PopularPage {
 
   constructor(private navCtrl: NavController, 
-              private navParams: NavParams, 
               private modal: ModalController) {
   }
 

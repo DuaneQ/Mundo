@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { IndividMatchPage } from '../pages'
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database'
+import { IItinerary } from '../../models/itinerary'
+import { CameraServiceProvider } from '../../providers/providers'
 
 /**
  * Generated class for the MatchesPage page.
@@ -15,14 +18,20 @@ import { IndividMatchPage } from '../pages'
 })
 export class MatchesPage {
 
-  tab1Root = MatchesPage;
-  tab2Root = IndividMatchPage;
+  itineraryList$: FirebaseListObservable<IItinerary[]>;
+  public category: string = 'findMatch';
+  public categories: Array<string> = ['findMatch', 'myItin', 'matches']
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams,
+              public afDatabase: AngularFireDatabase,
+              private cameraServiceProvider: CameraServiceProvider) {
+              
+              this.itineraryList$ =  this.afDatabase.list(`/itineraries/`);
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MatchesPage');
+    onTabChanged(tabName) {
+    this.category = tabName;
   }
-
 }
