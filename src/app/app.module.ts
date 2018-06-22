@@ -20,7 +20,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { PlacesServiceProvider } from '../providers/places-service/places-service';
 import { AgmCoreModule } from '@agm/core';
 import { SwipeSegmentDirective } from '../directives/swipe-segment.directive';
-
+import { GooglePlus } from '@ionic-native/google-plus'
 // AF2 Settings
 export const firebaseConfig = {
     apiKey: "AIzaSyAXX54EgG7dHbs-lgm_uRheJm-1Q-4NBGk",
@@ -92,7 +92,8 @@ export const firebaseConfig = {
     GeolocateServiceProvider,
     Geolocation,
     PlacesServiceProvider,
-    CameraServiceProvider
+    CameraServiceProvider,
+    GooglePlus
   ]
 })
 export class AppModule {}

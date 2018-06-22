@@ -26,9 +26,18 @@
     </ion-slide>
   </ion-slides>-->
   <ion-footer no-shadow>
-    <button ion-button icon-left block (click)="facebookLogin()">
-      <ion-icon name="logo-facebook"></ion-icon>
-      Login with Facebook
-    </button>
+    <div>
+      <button ion-button icon-left block
+              *ngIf="!user.uid"
+              (tap)="googleLogin()">
+              Login with Google
+      </button>
+    </div>
+      <div>
+      <button ion-button icon-left block (click)="facebookLogin()">
+        <ion-icon name="logo-facebook"></ion-icon>
+        Login with Facebook
+      </button>
+    </div>
   </ion-footer>
 </ion-content>

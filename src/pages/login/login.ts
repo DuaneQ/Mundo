@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
-import { HomePage} from '../pages'
+import { NavController, NavParams, Platform } from 'ionic-angular';
+import { HomePage, TabsPage} from '../pages'
 import { Facebook } from '@ionic-native/facebook'
+import { GooglePlus } from '@ionic-native/google-plus'
 import { LoginServiceProvider } from '../../providers/providers'
 import firebase from 'firebase'
+import { AngularFireAuth } from 'angularfire2/auth'
+import { Observable } from 'rxjs/Observable'
 
 /**
  * Generated class for the LoginPage page.
@@ -36,10 +39,17 @@ export class LoginPage {
     }
   ];
 
+  user: Observable<firebase.User>;
+
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public facebook: Facebook,
-              public firebaseLogin: LoginServiceProvider) {
+              public firebaseLogin: LoginServiceProvider,
+              private afAuth: AngularFireAuth,
+              private gPlus: GooglePlus,
+              private platform: Platform) {
+              
+              this.user = this.afAuth.authState;
   }
 
   facebookLogin() {
@@ -48,10 +58,52 @@ export class LoginPage {
       firebase.auth().signInWithCredential(credentials).then((success)=>{
             this.userProfile = success;
             this.firebaseLogin.setUpUser(credentials, success);
-            this.navCtrl.setRoot(HomePage);
+            this.navCtrl.parent.select(2);
       })
     }).catch(err=>{
       alert(JSON.stringify(err))
     })
+  }
+
+  googleLogin(){
+    if (this.platform.is('cordova')){
+      this.nativeGoogleLogin();
+    } else {
+      this.webGoogleLogin();
+    }
+  }
+
+  async nativeGoogleLogin(): Promise<void> {
+    try {
+      const gplusUser = await this.gPlus.login({
+        'webClientId' : '920843394799-agr1ul1hadm3bnl2f8bgmlgq6agjln95.apps.googleusercontent.com',
+        'offline' : true,
+        'scopes' : 'profile email'
+      })
+
+      return await this.afAuth.auth.signInWithCredential(
+        firebase.auth.GoogleAuthProvider.credential(gplusUser.idToken)
+      ).then(() =>{
+          this.navCtrl.setRoot(TabsPage);
+      })
+    } catch(err){
+      console.log(err);
+    }
+  }
+
+    async webGoogleLogin(): Promise<void> {
+    try {
+      const gplusUser = await this.gPlus.login({
+        'webClientId' : '920843394799-agr1ul1hadm3bnl2f8bgmlgq6agjln95.apps.googleusercontent.com',
+        'offline' : true,
+        'scopes' : 'profile email'
+      })
+
+      return await this.afAuth.auth.signInWithCredential(
+        firebase.auth.GoogleAuthProvider.credential(gplusUser.idToken)
+      )
+    } catch(err){
+      console.log(err);
+    }
   }
 }
