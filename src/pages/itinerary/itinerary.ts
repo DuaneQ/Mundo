@@ -20,6 +20,7 @@ export class ItineraryPage implements OnInit{
 
   startDate: string = new Date().toISOString();
   endDate: string = new Date().toISOString();
+  todaysDate: String = Date.now.toString();
   destination: string;
   activities:string[] = []; 
   addActivities:string;

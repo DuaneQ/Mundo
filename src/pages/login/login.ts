@@ -58,7 +58,7 @@ export class LoginPage {
       firebase.auth().signInWithCredential(credentials).then((success)=>{
             this.userProfile = success;
             this.firebaseLogin.setUpUser(credentials, success);
-            this.navCtrl.parent.select(2);
+            this.navCtrl.setRoot(TabsPage);
       })
     }).catch(err=>{
       alert(JSON.stringify(err))
