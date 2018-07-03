@@ -56,6 +56,12 @@
                   <h2>{{userItinerary.itinerary.endDate | date: "MM/dd/yyyy"}}</h2>
                 </ion-col>
               </ion-row>
+              <ion-label>Trip details</ion-label>
+              <h2>{{userItinerary.itinerary.tripDetails}}</h2>
+              <ion-label> Activities </ion-label>
+              <div class="chip" *ngFor="let activity of userItinerary.itinerary.activities">
+                <label> {{ activity }} </label>
+              </div>
             </ion-card-content>
 
             <ion-row>

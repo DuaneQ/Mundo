@@ -37,18 +37,30 @@
       </p>
     </div>
     <div>
+      <ion-label>Trip details</ion-label>
+      <textarea rows="4" cols="35" [(ngModel)]="tripDetails" placeholder="Tell us why someone would want to join you">
+      </textarea>
+    </div>
+    <div>
           <ion-label>Activities</ion-label>
           <input type="text" [(ngModel)]="addActivities" (keyup.enter)="addActivity()" 
                   placeholder="Enter activity">
     </div>
-          <div padding>
+        <div class="chip" *ngFor="let activity of activities">
+              <label> {{ activity }} </label>
+              <button (click)="deleteActivity(activity)">
+                <img src="assets/img/ic-small-close.png"/>
+              </button>
+        </div>
+
+          <!--<div padding class="chip">
             <ion-chip *ngFor="let activity of activities">
               <ion-label>{{ activity }}</ion-label>
               <button (click)="deleteActivity(activity)">
                 <img src="assets/img/ic-small-close.png"/>
               </button>
             </ion-chip>
-          </div>
+          </div>-->
   </ion-card-content>
 </ion-card>
 </ion-content>

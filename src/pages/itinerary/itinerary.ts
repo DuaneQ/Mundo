@@ -22,6 +22,7 @@ export class ItineraryPage implements OnInit{
   endDate: string = new Date().toISOString();
   todaysDate: String = Date.now.toString();
   destination: string;
+  tripDetails: string;
   activities:string[] = []; 
   addActivities:string;
   itineraryList$: FirebaseListObservable<IItinerary[]>;
@@ -72,7 +73,8 @@ export class ItineraryPage implements OnInit{
         startDate: this.startDate,
         endDate: this.endDate,
         destination: this.destination,
-        activities: this.activities
+        activities: this.activities,
+        tripDetails: this.tripDetails
     }
     this.firebaseSvcProvider.addItinerary(itinerary).then(() => {
                                           this.view.dismiss()});

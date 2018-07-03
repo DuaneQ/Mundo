@@ -3,4 +3,5 @@ export interface IItinerary{
     endDate: String;
     destination: string;
     activities: string[];
+    tripDetails: string;
 }
