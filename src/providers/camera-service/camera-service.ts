@@ -41,7 +41,7 @@ export class CameraServiceProvider {
     this.camera.getPicture({
       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
       destinationType: this.camera.DestinationType.DATA_URL,
-      quality: 100,
+      quality: 20,
       encodingType: this.camera.EncodingType.PNG,
     }).then(imageData => {
       this.myPhoto = imageData;

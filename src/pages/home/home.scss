@@ -67,6 +67,12 @@ img {
     background: transparent;
     text-decoration: none !important;
   }
+
+    p {
+        color: black !important;
+        font-size: 14px !important;
+        font-weight: normal !important;
+    }
 }
 
 .icon {
@@ -116,17 +122,21 @@ ion-label{
  }
 
  ion-chip{
-  width: 123.7px !important;
-  height: 34.1px !important;
-  border-radius: 6.8px !important;
-  padding: 5px;
-  margin: 5px 10px 10px 0;
- }
-
- img{
-  width: 9px;
-  height: 11px;
- }
+                display: inline-block;
+                padding: 0 25px;
+                padding-bottom: 25px;
+                height: 30px;
+                font-size: 12px;
+                line-height: 20px;
+                border-radius: 25px;
+                background-color: #f1f1f1;
+                margin: 3px;
+                 img{
+                    width: 3px !important;
+                    height: 3px !important;
+                    float: right !important;
+                    }
+    }
 
   ion-toggle{
     background:  rgba(19,41,144,0.80) !important;

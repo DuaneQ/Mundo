@@ -34,7 +34,7 @@
       </ion-card-content>
       <ion-card-content>
         <ion-label>Name</ion-label>
-        <ion-label>{{ loggedInUser.displayName }}</ion-label>
+        <p>{{ loggedInUser.displayName }}</p>
       </ion-card-content>
     </ion-card>
 
@@ -53,6 +53,7 @@
     </ion-card>
 
     <ion-card>
+      <ion-card-content>
         <ion-label>Add photos</ion-label>
         <ion-row class="add-background">
           <ion-col>
@@ -98,13 +99,14 @@
             </div>
           </ion-col>
         </ion-row>
+      </ion-card-content>
     </ion-card>
 
     <ion-card>
       <ion-card-content>
         <ion-label>Interested destinations</ion-label>
           <input placeholder="Enter city" #searchPlaces>
-        <div padding class="selected-places">
+        <div class="selected-places">
         <ion-chip *ngFor="let intPlace of intPlaces">
           <ion-label>{{ intPlace }}</ion-label>
           <button (click)="deletePlace(intPlace)">
@@ -139,7 +141,6 @@
   <ion-content class="settings">
     <ion-row>
         <img src="assets/img/advanced.png" (click)="goToSettings()"/>
-        <img src="assets/img/edit.png" (click)="goToInfo()"/>
     </ion-row>
   </ion-content>
 </ion-content>
