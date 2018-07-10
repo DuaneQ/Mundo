@@ -101,19 +101,17 @@
         </ion-row>
       </ion-card-content>
     </ion-card>
-
+    
     <ion-card>
       <ion-card-content>
-        <ion-label>Interested destinations</ion-label>
+      <div>
+          <ion-label>Future destinations</ion-label>
           <input placeholder="Enter city" #searchPlaces>
-        <div class="selected-places">
-        <ion-chip *ngFor="let intPlace of intPlaces">
-          <ion-label>{{ intPlace }}</ion-label>
-          <button (click)="deletePlace(intPlace)">
-            <img src="assets/img/ic-small-close.png"/>
-          </button>
-        </ion-chip>
-      </div> 
+      </div>
+          <div class="chipTest" *ngFor="let intPlace of intPlaces">
+            {{ intPlace }}
+            <span class="closebtn" (click)="deletePlace(intPlace)">&times;</span>
+          </div>
       </ion-card-content>
     </ion-card>
 

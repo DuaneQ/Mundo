@@ -80,67 +80,56 @@ img {
 }
 
 .settings {
-img {
-    height: 60px;
-    width: 60px;
-    border-radius: 50%;
-    align-items: left;
-    margin: auto;
-    display: block;
-    }
+    img {
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+        align-items: left;
+        margin: auto;
+        display: block;
+        }
 }
 
 .add-background {
-div{
-    border: none !important;
-}
+    div{
+        border: none !important;
+        }
 
-img{
-  width: 96px;
-  height: 96px;
-  border-radius: 1.5px;
-  background-color: #f2f4f7;
-  align-items: left !important;
-  text-align: left !important;
-  margin: 10px 0 10px -5px;
- }
+    img{
+        width: 96px;
+        height: 96px;
+        border-radius: 1.5px;
+        background-color: #f2f4f7;
+        align-items: left !important;
+        text-align: left !important;
+        margin: 10px 0 10px -5px;
+        }
 }
 
 .selected-places {
-ion-label{
-  width: 79.4px;
-  font-family: Gotham;
-  font-size: 14.2px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: black !important;
-  overflow-y: visible !important;
- }
-
- ion-chip{
-                display: inline-block;
-                padding: 0 25px;
-                padding-bottom: 25px;
-                height: 30px;
-                font-size: 12px;
-                line-height: 20px;
-                border-radius: 25px;
-                background-color: #f1f1f1;
-                margin: 3px;
-                 img{
-                    width: 3px !important;
-                    height: 3px !important;
-                    float: right !important;
-                    }
-    }
-
   ion-toggle{
     background:  rgba(19,41,144,0.80) !important;
     color: black !important;
     font-weight: normal !important;
- }
+    }
+}
+
+.chipTest {
+    display: inline-block;
+    padding: 0 25px;
+    height: 30px;
+    font-size: 10px;
+    line-height: 30px;
+    border-radius: 25px;
+    background-color: #f1f1f1;
+    margin: 3px;
+}
+
+.closebtn {
+    padding-left: 10px;
+    color: black;
+    font-weight: bold;
+    float: right;
+    font-size: 20px;
+    cursor: pointer;
 }
