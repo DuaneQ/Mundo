@@ -4,6 +4,7 @@ import { MapsAPILoader } from '@agm/core';
 import { FirebaseServiceProvider } from '../../providers/providers'
 import { IItinerary } from '../../models/itinerary'
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database'
+import { AngularFireAuth } from 'angularfire2/auth';
 
 /**
  * Generated class for the ItineraryPage page.
@@ -26,6 +27,7 @@ export class ItineraryPage implements OnInit{
   activities:string[] = []; 
   addActivities:string;
   itineraryList$: FirebaseListObservable<IItinerary[]>;
+  private userId:string;
 
   @ViewChild('destin') public destinElement: ElementRef;
 
@@ -33,7 +35,12 @@ export class ItineraryPage implements OnInit{
               private ngZone: NgZone,
               private view: ViewController,
               private firebaseSvcProvider: FirebaseServiceProvider,
-              public afDatabase: AngularFireDatabase) {
+              public afDatabase: AngularFireDatabase,
+              private afAuth: AngularFireAuth) {
+                        
+              this.afAuth.authState.subscribe(user => {
+              this.userId = user.uid});
+
               this.itineraryList$ =  this.afDatabase.list(`/itineraries/`);
   }
 
@@ -74,7 +81,8 @@ export class ItineraryPage implements OnInit{
         endDate: this.endDate,
         destination: this.destination,
         activities: this.activities,
-        tripDetails: this.tripDetails
+        tripDetails: this.tripDetails,
+        userId: this.userId
     }
     this.firebaseSvcProvider.addItinerary(itinerary).then(() => {
                                           this.view.dismiss()});

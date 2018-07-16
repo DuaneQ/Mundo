@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { ItineraryPage } from '../pages'
+import { Employee } from '../../models/employee.model'
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database'
+import { IItinerary } from '../../models/itinerary'
 
 /**
  * Generated class for the PopularPage page.
@@ -15,8 +18,15 @@ import { ItineraryPage } from '../pages'
 })
 export class PopularPage {
 
+  itineraryList$: FirebaseListObservable<IItinerary[]>;
+  languages = ['English', 'Spanish', 'Other'];
+  model = new Employee('Shae', 'Kenya', true, '1099', 'Spanish');
+
   constructor(private navCtrl: NavController, 
-              private modal: ModalController) {
+              private modal: ModalController,
+              public afDatabase: AngularFireDatabase) {
+
+              this.itineraryList$ =  this.afDatabase.list(`/itineraries/`);
   }
 
   openModal(){

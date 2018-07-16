@@ -4,4 +4,5 @@ export interface IItinerary{
     destination: string;
     activities: string[];
     tripDetails: string;
+    userId: string;
 }
