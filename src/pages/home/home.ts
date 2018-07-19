@@ -38,7 +38,7 @@ export class HomePage implements OnInit{
               private ngZone: NgZone,
               private afAuth: AngularFireAuth,
               private cameraServiceProvider: CameraServiceProvider) {
-
+        
         this.afAuth.authState.subscribe(user => {
         this.userId = user.uid
         this.myPhotosRef = firebase.storage().ref(`/Photos/${ this.userId }/`);
@@ -46,6 +46,8 @@ export class HomePage implements OnInit{
     }
 
   ngOnInit(){
+
+
         this.mapsApiLoader.load().then(
         () => {
           let autocomplete = new google.maps.places.Autocomplete(this.searchElement.nativeElement, {types:['(cities)']});

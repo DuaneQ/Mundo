@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { ItineraryPage } from '../pages'
 import { Employee } from '../../models/employee.model'
@@ -16,7 +16,7 @@ import { IItinerary } from '../../models/itinerary'
   selector: 'page-popular',
   templateUrl: 'popular.html',
 })
-export class PopularPage {
+export class PopularPage implements OnInit {
 
   itineraryList$: FirebaseListObservable<IItinerary[]>;
   languages = ['English', 'Spanish', 'Other'];
@@ -25,8 +25,10 @@ export class PopularPage {
   constructor(private navCtrl: NavController, 
               private modal: ModalController,
               public afDatabase: AngularFireDatabase) {
+  }
 
-              this.itineraryList$ =  this.afDatabase.list(`/itineraries/`);
+  ngOnInit(){
+    this.itineraryList$ =  this.afDatabase.list(`/itineraries/`);
   }
 
   openModal(){
