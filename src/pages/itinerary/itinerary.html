@@ -13,7 +13,7 @@
     </ion-buttons> 
     <ion-title text-center>Create itinerary</ion-title> 
       <ion-buttons right>
-        <button ion-button text-only (click)="saveItinerary()">
+        <button ion-button text-only [disabled]="!sdate.valid || !edate.valid || !city.valid" (click)="saveItinerary()">
           Save
         </button>
       </ion-buttons>
@@ -21,46 +21,63 @@
 </ion-header>
 
 <ion-content class="cards-bg">
+  <ion-card padding class="ion-cards">
+    <ion-card-content padding>
+      <div >
+          <ion-label for="destination">*Destination</ion-label>
+          <input type="text"  [(ngModel)]="destination" 
+            name="destination" required id="destination" #city="ngModel" placeholder="Enter destination" #destin>
+      </div>
+      <div class="form-group">
+        <ion-label >*Trip start and enddates</ion-label>
+          <p style="float: left;">
+            <input type="date" [(ngModel)]="startDate" #sdate="ngModel"  required />
+          </p>
+          <p style="float: right;">
+            <input type="date" [(ngModel)]="endDate" #edate="ngModel"  required />
+          </p>
+      </div>
+      <div>
+        <ion-label>Trip details</ion-label>
+        <textarea rows="4" cols="35" [(ngModel)]="tripDetails"
+          name="tripDetails" placeholder="Tell us why someone would want to join you">
+        </textarea>
+      </div>
+      <div>
+            <ion-label>Activities</ion-label>
+            <input type="text" [(ngModel)]="addActivities" 
+              name="addActivities" (keyup.enter)="addActivity()" 
+                    placeholder="Enter activity">
+      </div>
+          <div class="chip" *ngFor="let activity of activities">
+                <label> {{ activity }} </label>
+                <button (click)="deleteActivity(activity)">
+                  <img src="assets/img/ic-small-close.png"/>
+                </button>
+          </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<!--<ion-content class="cards-bg">
 <ion-card padding class="ion-cards">
   <ion-card-content padding>
-    <div>
-        <ion-label>Destination</ion-label>
-        <input type="text" [(ngModel)]="destination" placeholder="Enter destination" #destin>
-    </div>
-    <div>
-      <ion-label>Trip dates</ion-label>
-      <p style="float: left;">
-      <input type="date" [(ngModel)]="startDate" placeholder="Start" />
-      </p>
-      <p style="float: right;">
-      <input type="date" [(ngModel)]="endDate" placeholder="End"/>
-      </p>
-    </div>
-    <div>
-      <ion-label>Trip details</ion-label>
-      <textarea rows="4" cols="35" [(ngModel)]="tripDetails" placeholder="Tell us why someone would want to join you">
-      </textarea>
-    </div>
-    <div>
-          <ion-label>Activities</ion-label>
-          <input type="text" [(ngModel)]="addActivities" (keyup.enter)="addActivity()" 
-                  placeholder="Enter activity">
-    </div>
-        <div class="chip" *ngFor="let activity of activities">
-              <label> {{ activity }} </label>
-              <button (click)="deleteActivity(activity)">
-                <img src="assets/img/ic-small-close.png"/>
-              </button>
+    <form #loginForm="ngForm" (ngSubmit)="saveItinerary()" autocomplete="off">
+        <div class="form-group">
+            <label for="destination">Destination</label>
+            <em *ngIf="loginForm.controls.destination?.invalid &&
+                loginForm.controls.destination?.touched">Required</em>
+            <input #destin (ngModel)="destination" name="destination" required id="destination" type="text" 
+              class="form-control" placeholder="Enter destination"/>
         </div>
-
-          <!--<div padding class="chip">
-            <ion-chip *ngFor="let activity of activities">
-              <ion-label>{{ activity }}</ion-label>
-              <button (click)="deleteActivity(activity)">
-                <img src="assets/img/ic-small-close.png"/>
-              </button>
-            </ion-chip>
-          </div>-->
-  </ion-card-content>
+        <div class="form-group">
+            <label for="startDate">Start date</label>
+            <em *ngIf="loginForm.controls.startDate?.invalid &&
+                loginForm.controls.startDate?.touched">Required</em>
+            <input (ngModel)="startDate" name="startDate" required id="startDate" type="date" 
+              class="form-control" placeholder="Start date"/>
+        </div>
+    </form>
+      </ion-card-content>
 </ion-card>
-</ion-content>
+</ion-content>-->

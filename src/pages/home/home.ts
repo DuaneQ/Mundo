@@ -46,8 +46,6 @@ export class HomePage implements OnInit{
     }
 
   ngOnInit(){
-
-
         this.mapsApiLoader.load().then(
         () => {
           let autocomplete = new google.maps.places.Autocomplete(this.searchElement.nativeElement, {types:['(cities)']});

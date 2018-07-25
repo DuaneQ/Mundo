@@ -19,11 +19,15 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class ItineraryPage implements OnInit{
 
-  startDate: string = new Date().toISOString();
-  endDate: string = new Date().toISOString();
+  startDate: string;
+  endDate: string;
+  schedule={
+    sdate: "",
+    edate: ""
+  }
   todaysDate: String = Date.now.toString();
   destination: string;
-  tripDetails: string;
+  tripDetails: string = null;
   activities:string[] = []; 
   addActivities:string;
   itineraryList$: FirebaseListObservable<IItinerary[]>;
