@@ -21,6 +21,8 @@ import { PlacesServiceProvider } from '../providers/places-service/places-servic
 import { AgmCoreModule } from '@agm/core';
 import { SwipeSegmentDirective } from '../directives/swipe-segment.directive';
 import { GooglePlus } from '@ionic-native/google-plus'
+import { ItineraryListPage } from '../common/itinerary-list.component'
+
 // AF2 Settings
 export const firebaseConfig = {
     apiKey: "AIzaSyAXX54EgG7dHbs-lgm_uRheJm-1Q-4NBGk",
@@ -47,7 +49,8 @@ export const firebaseConfig = {
     ItineraryPage,
     MatchesPage,
     IndividMatchPage,
-    SwipeSegmentDirective
+    SwipeSegmentDirective,
+    ItineraryListPage
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),
@@ -77,7 +80,8 @@ export const firebaseConfig = {
     MessageCenterPage,
     ItineraryPage,
     MatchesPage,
-    IndividMatchPage
+    IndividMatchPage,
+    ItineraryListPage
   ],
   providers: [
     StatusBar,

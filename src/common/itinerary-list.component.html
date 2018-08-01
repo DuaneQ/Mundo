@@ -1,0 +1,23 @@
+
+<div>
+  <h2>{{userItinerary.itinerary.startDate | date: "MM/dd/yyyy"}} - {{userItinerary.itinerary.endDate | date: "MM/dd/yyyy"}}</h2>
+</div>
+<div>
+  <h1>{{userItinerary.itinerary.destination}}</h1>
+</div>
+<div>
+  <h2>{{userItinerary.itinerary.tripDetails}}</h2>
+</div>
+<div class="chip" *ngFor="let activity of userItinerary.itinerary.activities">
+  <label> {{ activity }} </label>
+</div>
+
+
+            <!--<ion-row>
+              <ion-col>
+                <button ion-button icon-left clear small>
+                  <ion-icon name="thumbs-up"></ion-icon>
+                  <div>12 Likes</div>
+                </button>
+              </ion-col>
+            </ion-row>-->

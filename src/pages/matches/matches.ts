@@ -4,6 +4,8 @@ import { IndividMatchPage } from '../pages'
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database'
 import { IItinerary } from '../../models/itinerary'
 import { CameraServiceProvider } from '../../providers/providers'
+import firebase from 'firebase';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 /**
  * Generated class for the MatchesPage page.
@@ -18,7 +20,11 @@ import { CameraServiceProvider } from '../../providers/providers'
 })
 export class MatchesPage implements OnInit{
 
-  itineraryList$: FirebaseListObservable<IItinerary[]>;
+  private userId:string;
+  myItineraryList$: any;
+  matchItineraryList$: FirebaseListObservable<IItinerary[]>;
+  findItineraryList$: FirebaseListObservable<IItinerary[]>;
+
   public category: string = 'findMatch';
   public categories: Array<string> = ['findMatch', 'myItin', 'matches']
 
@@ -26,11 +32,21 @@ export class MatchesPage implements OnInit{
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public afDatabase: AngularFireDatabase,
-              private cameraServiceProvider: CameraServiceProvider) {              
+              private cameraServiceProvider: CameraServiceProvider,
+              private afAuth: AngularFireAuth,) {
+
+        this.afAuth.authState.subscribe(user => {
+        this.userId = user.uid
+      });              
   }
   
   ngOnInit(){
-    this.itineraryList$ =  this.afDatabase.list(`/itineraries/`);
+    const baseList = firebase.database().ref('itineraries');
+    this.myItineraryList$ = baseList.orderByChild('userId').equalTo(this.userId);
+
+    this.matchItineraryList$ =  this.afDatabase.list(`/itineraries/`);
+    
+    this.findItineraryList$ =  this.afDatabase.list(`/itineraries/`);
   }
 
     onTabChanged(tabName) {

@@ -23,57 +23,39 @@
 <ion-content>
   <div [ngSwitch]="category" swipeSegment [tabsList]="categories" [(currentTab)]="category" (tabChanged)="onTabChanged($event)" class="swipe-area">
     <ion-list *ngSwitchCase="'findMatch'">
-      <ion-item>
-        Batman Begins
-      </ion-item>
-      <ion-item>
-        Transporter
-      </ion-item>
-      <ion-item>
-        Million Dollar Baby
-      </ion-item>
+      <div *ngFor="let userItinerary of findItineraryList$ | async">
+        <ion-card class="itinerary-module">
+            <ion-card-content>
+                <itinerary-list
+                [userItinerary]="userItinerary">
+                </itinerary-list>
+            </ion-card-content>
+        </ion-card>
+      </div>
     </ion-list>
 
     <ion-list *ngSwitchCase="'myItin'">
-      <div *ngFor="let userItinerary of itineraryList$ | async">
+      <div *ngFor="let userItinerary of myItineraryList$ | async">
         <ion-card class="itinerary-module">
             <ion-card-content>
-              <div>
-                <h2>{{userItinerary.itinerary.startDate | date: "MM/dd/yyyy"}} - {{userItinerary.itinerary.endDate | date: "MM/dd/yyyy"}}</h2>
-              </div>
-              <div>
-                <h1>{{userItinerary.itinerary.destination}}</h1>
-              </div>
-              <div>
-                <h2>{{userItinerary.itinerary.tripDetails}}</h2>
-              </div>
-              <div class="chip" *ngFor="let activity of userItinerary.itinerary.activities">
-                <label> {{ activity }} </label>
-              </div>
+                <itinerary-list
+                [userItinerary]="userItinerary">
+                </itinerary-list>
             </ion-card-content>
-
-            <!--<ion-row>
-              <ion-col>
-                <button ion-button icon-left clear small>
-                  <ion-icon name="thumbs-up"></ion-icon>
-                  <div>12 Likes</div>
-                </button>
-              </ion-col>
-            </ion-row>-->
         </ion-card>
       </div>
     </ion-list>
 
     <ion-list *ngSwitchCase="'matches'">
-      <ion-item>
-        Ice Age
-      </ion-item>
-      <ion-item>
-        Lion King
-      </ion-item>
-      <ion-item>
-        Up
-      </ion-item>
+      <div *ngFor="let userItinerary of matchItineraryList$ | async">
+        <ion-card class="itinerary-module">
+            <ion-card-content>
+                <itinerary-list
+                [userItinerary]="userItinerary">
+                </itinerary-list>
+            </ion-card-content>
+        </ion-card>
+      </div>
     </ion-list>
   </div>
 </ion-content>
